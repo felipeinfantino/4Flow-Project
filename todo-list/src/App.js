@@ -3,6 +3,7 @@ import './App.css';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddTodo from './components/AddTodo';
 
 
 export const columnNames = {
@@ -31,6 +32,11 @@ class App extends React.Component {
           {
             id: 12,
             title: 'Coordinate supplier',
+            completed: false,
+          },
+          {
+            id: 13,
+            title: 'Coordinate with company manager',
             completed: false,
           },
           ]
@@ -156,10 +162,7 @@ render(){
   return (
     <div className="App">
       <Header />
-      <div>
-        <input type="text" value={this.state.newTodoTitle} onChange={this.setNewTitle} />
-        <button type="button" onClick={this.addTodo} disabled={this.canAddTodo()}>Add todo</button>
-      </div>
+      <AddTodo />
       <div style={this.getStyle()}>
         {Object.keys(columnNames).map((state) =>{
           return (
