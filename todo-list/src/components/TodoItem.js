@@ -1,28 +1,27 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { states } from '../App';
+import { columnNames } from '../App';
 
 export class TodoItem extends Component {
     render() {
-        const {id, title, completed} = this.props.todo;
+        const {id, title} = this.props.todo;
         return (
-            <div style={this.getTodoItemStyle(this.props.todo.completed)}>
+            <div style={this.getTodoItemStyle()}>
                 <p>
-                    { this.props.todo.status !== states.TO_DO ?  <button type="button" onClick={this.props.shiftItem.bind(this, id, false)}>sl</button> : ''}
+                    { this.props.todo.status !== columnNames.TO_DO ?  <button type="button" onClick={this.props.shiftItem.bind(this, id, false)}>sl</button> : ''}
                     {title}
-                    { this.props.todo.status !== states.DONE ? <button type="button" onClick={this.props.shiftItem.bind(this, id, true)}>-></button> : ''}
+                    { this.props.todo.status !== columnNames.DONE ? <button type="button" onClick={this.props.shiftItem.bind(this, id, true)}>-></button> : ''}
                 </p>
             </div>
         )
     }
 
 
-    getTodoItemStyle = (completed) => {
+    getTodoItemStyle = () => {
        return {
            backgroundColor: '#f4f4f4',
            padding: '10px',
            borderBottom: '1px #ccc dotted',
-           textDecoration: completed ? 'line-through' : 'none',
         } 
     }
 

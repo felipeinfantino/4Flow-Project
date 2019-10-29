@@ -4,7 +4,7 @@ import './App.css';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 
-export const states = {
+export const columnNames = {
   TO_DO : 'To do',
   IN_PROGRESS : 'In progress',
   WAITING : 'Waiting',
@@ -20,35 +20,24 @@ class App extends React.Component {
       {
         id: 1,
         title: 'Contact supplier',
-        status: states.TO_DO,
-        completed: false,
+        status: columnNames.TO_DO,
       },
       {
         id: 2,
         title: 'Send emaul',
-        status: states.IN_PROGRESS,
-        completed: false,
+        status: columnNames.IN_PROGRESS,
       },
       {
         id: 3,
         title: 'done emaul',
-        status: states.DONE,
-        completed: false,
+        status: columnNames.DONE,
       },
     ],
     maxId : 4,
     newTodoTitle : '',
-    statusOrder: [states.TO_DO, states.IN_PROGRESS, states.WAITING, states.DONE],
+    statusOrder: [columnNames.TO_DO, columnNames.IN_PROGRESS, columnNames.WAITING, columnNames.DONE],
   }
 
-  toggleCheck = (event) =>{
-    this.setState({todos: this.state.todos.map((todo) => {
-      if(todo.id === event){
-        todo.completed = !todo.completed;
-      }
-      return todo;
-    })});
-  }
 
   deleteItem = (id) =>{
     const elem = this.state.todos.find((todo) => todo.id === id);
@@ -91,11 +80,10 @@ class App extends React.Component {
     const newItem = {
       id: maxId,
       title: newTodoTitle,
-      completed: false,
+      status: columnNames.TO_DO,
     }
     this.state.todos.push(newItem)
     this.setState({todos: this.state.todos , maxId: maxId, newTodoTitle: ''});
-    
   }
 
   canAddTodo = () =>{
@@ -115,12 +103,11 @@ render(){
         <button type="button" onClick={this.addTodo} disabled={this.canAddTodo()}>Add todo</button>
       </div>
       <div style={{display: 'flex'}}>
-        {Object.keys(states).map((state) =>{
+        {Object.keys(columnNames).map((state) =>{
           return (
               <div key={state} style={{width: '25vw'}}>
-                <h2>{states[state]}</h2>
-                <Todos todos={this.state.todos.filter((todo) => todo.status === states[state])} 
-                toggleCheck={this.toggleCheck} 
+                <h2>{columnNames[state]}</h2>
+                <Todos todos={this.state.todos.filter((todo) => todo.status === columnNames[state])} 
                 deleteItem={this.deleteItem}
                 shiftItem={this.shiftItem}
                 />
