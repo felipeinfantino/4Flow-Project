@@ -1,30 +1,22 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { columnNames } from '../App';
+import { Accordion, Card } from 'react-bootstrap';
+import SubTaskList from './SubTaskList';
 
 export class TodoItem extends Component {
     render() {
         const {id, title} = this.props.todo;
         return (
-            <div style={this.getTodoItemStyle()}>
-                <p>
-                    { this.props.todo.status !== columnNames.TO_DO ?  <button type="button" onClick={this.props.shiftItem.bind(this, id, false)}>sl</button> : ''}
-                    {title}
-                    { this.props.todo.status !== columnNames.DONE ? <button type="button" onClick={this.props.shiftItem.bind(this, id, true)}>-></button> : ''}
-                </p>
-            </div>
+            <Card style={{border: '1px solid black', borderRadius: '10px'}}>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                {title}
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                    <SubTaskList subTasks={this.props.todo.subTasks} key={id} todoId={id} toggleSubTask={this.props.toggleSubTask} />
+                </Accordion.Collapse>
+            </Card>
         )
     }
-
-
-    getTodoItemStyle = () => {
-       return {
-           backgroundColor: '#f4f4f4',
-           padding: '10px',
-           borderBottom: '1px #ccc dotted',
-        } 
-    }
-
 }
 
 TodoItem.propTypes = {
