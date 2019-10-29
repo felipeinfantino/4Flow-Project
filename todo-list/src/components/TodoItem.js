@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import { states } from '../App';
 
 export class TodoItem extends Component {
     render() {
@@ -7,9 +8,9 @@ export class TodoItem extends Component {
         return (
             <div style={this.getTodoItemStyle(this.props.todo.completed)}>
                 <p>
-                    <input type="checkbox" checked={completed} name='' id='' onChange={this.props.toggleCheck.bind(this, id)} />
+                    { this.props.todo.status !== states.TO_DO ?  <button type="button" onClick={this.props.shiftItem.bind(this, id, false)}>sl</button> : ''}
                     {title}
-                    <button type="button" onClick={this.props.deleteItem.bind(this, id)}>Delete</button>
+                    { this.props.todo.status !== states.DONE ? <button type="button" onClick={this.props.shiftItem.bind(this, id, true)}>-></button> : ''}
                 </p>
             </div>
         )

@@ -4,28 +4,41 @@ import './App.css';
 import Todos from './components/Todos';
 import Header from './components/layout/Header';
 
+export const states = {
+  TO_DO : 'To do',
+  IN_PROGRESS : 'In progress',
+  WAITING : 'Waiting',
+  DONE: 'Done',
+}
 
 class App extends React.Component {
+
+  
+
   state = {
     todos: [
       {
         id: 1,
         title: 'Contact supplier',
+        status: states.TO_DO,
         completed: false,
       },
       {
         id: 2,
-        title: 'Set a route',
+        title: 'Send emaul',
+        status: states.IN_PROGRESS,
         completed: false,
       },
       {
         id: 3,
-        title: 'Contact the truck guy',
+        title: 'done emaul',
+        status: states.DONE,
         completed: false,
       },
     ],
     maxId : 4,
     newTodoTitle : '',
+    statusOrder: [states.TO_DO, states.IN_PROGRESS, states.WAITING, states.DONE],
   }
 
   toggleCheck = (event) =>{
@@ -42,6 +55,34 @@ class App extends React.Component {
     const index = this.state.todos.indexOf(elem);
     this.state.todos.splice(index, 1)
     this.setState({todos : this.state.todos});
+  }
+
+  getNextState = (status) => {
+    const currentIndex = this.state.statusOrder.indexOf(status);
+    return this.state.statusOrder[currentIndex +1]; // UI is preventing overflow, the display buttons take care of this
+  }
+
+  getPreviousState = (status) => {
+    const currentIndex = this.state.statusOrder.indexOf(status);
+    return this.state.statusOrder[currentIndex - 1]; // UI is preventing overflow, the display buttons take care of this
+  }
+
+  // shiftLeft is a boolean, if true shiftLeft if false shiftRight 
+  shiftItem = (id, shiftLeft) =>{
+    this.setState({todos: this.state.todos.map((todo) =>{
+      if(todo.id === id){
+        let newStatus;
+        if(shiftLeft){
+          newStatus = this.getNextState(todo.status);
+        }else{
+          newStatus = this.getPreviousState(todo.status);
+        }
+        todo.status = newStatus;
+      }
+      return todo;
+    })})
+    console.log(id);
+    console.log(shiftLeft);
   }
 
   addTodo = () =>{
@@ -74,14 +115,18 @@ render(){
         <button type="button" onClick={this.addTodo} disabled={this.canAddTodo()}>Add todo</button>
       </div>
       <div style={{display: 'flex'}}>
-        <div style={{width: '50vw'}}>
-          <h2>To do</h2>
-          <Todos todos={this.state.todos.filter((todo) => todo.completed === false)} toggleCheck={this.toggleCheck} deleteItem={this.deleteItem}/>
-        </div>
-        <div  style={{width: '50vw'}}>
-        <h2>Done</h2>
-         <Todos todos={this.state.todos.filter((todo) => todo.completed === true)} toggleCheck={this.toggleCheck} deleteItem={this.deleteItem}/>
-        </div>
+        {Object.keys(states).map((state) =>{
+          return (
+              <div key={state} style={{width: '25vw'}}>
+                <h2>{states[state]}</h2>
+                <Todos todos={this.state.todos.filter((todo) => todo.status === states[state])} 
+                toggleCheck={this.toggleCheck} 
+                deleteItem={this.deleteItem}
+                shiftItem={this.shiftItem}
+                />
+              </div>
+          )
+        })}
       </div>
     </div>
   );
