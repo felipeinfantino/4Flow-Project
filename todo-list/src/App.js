@@ -5,6 +5,8 @@ import Header from './components/layout/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from './components/AddTodo';
 
+const uuidv4 = require('uuid/v4');
+
 
 export const columnNames = {
   TO_DO : 'To do',
@@ -20,29 +22,28 @@ class App extends React.Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuidv4(),
         title: 'Deliver Equipment Berlin - Hamburg',
         status: columnNames.TO_DO,
         subTasks: [
           {
-            id: 11,
+            id: uuidv4(),
             title: 'Coordinate transport',
             completed: false,
           },
           {
-            id: 12,
+            id: uuidv4(),
             title: 'Coordinate supplier',
             completed: false,
           },
           {
-            id: 13,
+            id: uuidv4(),
             title: 'Coordinate with company manager',
             completed: false,
           },
           ]
       },
     ],
-    maxId : 4,
     newTodoTitle : '',
     statusOrder: [columnNames.TO_DO, columnNames.IN_PROGRESS, columnNames.WAITING, columnNames.DONE],
   }
@@ -83,16 +84,10 @@ class App extends React.Component {
     console.log(shiftLeft);
   }
 
-  addTodo = () =>{
-    let {maxId, newTodoTitle} = this.state;
-    maxId +=1;
-    const newItem = {
-      id: maxId,
-      title: newTodoTitle,
-      status: columnNames.TO_DO,
-    }
-    this.state.todos.push(newItem)
-    this.setState({todos: this.state.todos , maxId: maxId, newTodoTitle: ''});
+  addTodo = (todo) =>{
+    this.state.todos.push(todo);
+    this.setState({todos: this.state.todos });
+    
   }
 
   canAddTodo = () =>{
@@ -162,7 +157,7 @@ render(){
   return (
     <div className="App">
       <Header />
-      <AddTodo />
+      <AddTodo addTodo={this.addTodo}/>
       <div style={this.getStyle()}>
         {Object.keys(columnNames).map((state) =>{
           return (

@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'react-bootstrap';
+import { columnNames } from '../App';
+const uuidv4 = require('uuid/v4');
+
+const defaultState = {
+    id: uuidv4(),
+    title: '',
+    buttonToggled : false,
+    subTasks: [
+        {
+            id: uuidv4(),
+            title: '',
+            completed: false,
+        },
+    ]
+}
 
 export class AddTodo extends Component {
-    state = {
-        buttonToggled : false,
-        subTasks: [
-            {
-                id: 1,
-                title: '',
-                completed: false,
-            },
-        ]
-    }
+    state = {...defaultState};
 
     toggleButton = () =>{
         this.setState({buttonToggled: !this.state.buttonToggled});
@@ -19,13 +25,42 @@ export class AddTodo extends Component {
 
     addSubtask = () => {
         const defaultSubtask = {
-            id: 1,
+            id: uuidv4(),
             title: '',
             completed: false,
         }
-        // not working
         this.state.subTasks.push(defaultSubtask)
         this.setState({subTasks: this.state.subTasks })
+    }
+
+    canSaveTodo = () =>{
+        const hasEverySubtaskATitle = this.state.subTasks.every((subtask) => subtask.title !== '');
+        const hasTodoTitle = this.state.title !== '';
+        return !(hasEverySubtaskATitle && hasTodoTitle);
+    }
+
+    handleChange = (subTaskId, event) =>{
+        const value = event.target.value;
+
+        this.setState({subTasks: this.state.subTasks.map((subTask) =>{
+            if(subTask.id === subTaskId){
+                subTask.title = value;
+            }
+            return subTask;
+        })})
+    }
+
+    handleTodoTitleChange = (event) =>{
+        const newTitle = event.target.value;
+        this.setState({title: newTitle});
+    }
+
+    prepareAndSubmit = () =>{
+        const stateCopy = {...this.state};
+        delete stateCopy['buttonToggled']
+        stateCopy['status'] = columnNames.TO_DO;
+        this.props.addTodo(stateCopy);
+        this.setState({...defaultState});
     }
 
     render() {
@@ -37,24 +72,26 @@ export class AddTodo extends Component {
                     <Form>
                     <Form.Group controlId="formBasicEmail">
                       <Form.Label>Todo</Form.Label>
-                      <Form.Control type="email" placeholder="Enter todo title" />
+                      <Form.Control type="email" placeholder="Enter todo title" onChange={this.handleTodoTitleChange.bind(this)} />
                     </Form.Group>
                     <p>Subtasks</p>
                     {this.state.subTasks.map((subTask) => {
                         return (
+                            <div key={subTask.id}>
                             <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Enter subtask" />
+                            <Form.Control type="email" placeholder="Enter subtask" defaultValue={subTask.title} onChange={this.handleChange.bind(this, subTask.id)} />
                             </Form.Group>
+                            </div>
                         )
                     })}
-                    <Button variant="secondary" type="submit">
+                    <Button variant="secondary"  onClick={this.addSubtask}>
                       Add subtask
                     </Button>
                     <div style={{display: 'block', marginTop: '50px'}}>
-                    <Button variant="danger" type="submit">
+                    <Button variant="danger" onClick={this.toggleButton} >
                       Cancel
                     </Button>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit} >
                       Submit
                     </Button>
                     </div>
