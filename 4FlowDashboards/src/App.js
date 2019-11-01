@@ -1,21 +1,16 @@
 import React from 'react';
 import './App.css';
-import Todos from './components/Todos';
-import Header from './components/layout/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AddTodo from './components/AddTodo';
 import {
   BrowserRouter,
   Route,
   Link,
   Switch,
-  Redirect
 } from 'react-router-dom'
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
 
-const uuidv4 = require('uuid/v4');
 document.body.style = 'background: black;'; 
 
 export const columnNames = {

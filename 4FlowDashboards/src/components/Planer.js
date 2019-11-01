@@ -2,16 +2,8 @@
 import React from 'react';
 import '../App.css';
 import Todos from './Todos';
-import Header from './layout/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from './AddTodo';
-import {
-  BrowserRouter,
-  Route,
-  Link,
-  Switch,
-  Redirect
-} from 'react-router-dom'
 const uuidv4 = require('uuid/v4');
 document.body.style = 'background: black;'; 
 
