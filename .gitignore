@@ -1,15 +1,15 @@
-first-app/node_modules
+
 
 # dependencies
-todo-list/node_modules
-todo-list/.pnp
+4FlowDashboards/node_modules
+4FlowDashboards/.pnp
 .pnp.js
 
 # testing
-todo-list/coverage
+4FlowDashboards/coverage
 
 # production
-todo-list/build
+4FlowDashboards/build
 
 # misc
 .DS_Store
