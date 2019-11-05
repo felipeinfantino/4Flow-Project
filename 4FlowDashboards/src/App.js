@@ -10,9 +10,11 @@ import {
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
+import UserLoginForm  from './components/UserLogin';
 import UserCreate from "./components/UserCreate"
 import SideBar from './components/SideBar';
 import ChangePasswordModal from './components/ChangePasswordModal';
+
 
 document.body.style = 'background: black;'; 
 
@@ -49,8 +51,8 @@ render() {
             <Route path="/balancer" component={Balancer} />
             <Route path="/change-password" component={ChangePasswordModal} />
             <Route path="/about" component={About} />
+            <Route path="/login" component={UserLoginForm } />
             <Route path="/create-account" component={UserCreate} />
-
           </Switch>
         </div>
         </BrowserRouter>
