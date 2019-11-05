@@ -10,6 +10,8 @@ import {
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
+import SideBar from './components/SideBar';
+import ChangePasswordModal from './components/ChangePasswordModal';
 
 import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
@@ -56,6 +58,7 @@ class App extends React.Component {
             </div>
         );
     }
+
 }
 
 export default App;

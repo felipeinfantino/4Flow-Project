@@ -2,7 +2,6 @@
   text-align: center;
   background-image: url(./assets/images/background.jpg);
   height: 100%; 
-  width: 70%;
   background-color: #000000;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,6 +27,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  height: 90px;
 }
 
 .App-link {
