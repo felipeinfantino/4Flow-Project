@@ -10,6 +10,7 @@ import {
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
+import UserCreate from "./components/UserCreate"
 import SideBar from './components/SideBar';
 import ChangePasswordModal from './components/ChangePasswordModal';
 
@@ -26,6 +27,7 @@ class App extends React.Component {
 
 render() {
   return (
+    
     <div className="App">
       <SideBar></SideBar>
       <header className="App-header">
@@ -38,6 +40,7 @@ render() {
             <li> <Link to="/balancer">Balancer</Link> </li>
             <li> <Link to="/change-password">Change Password</Link> </li>
             <li> <Link to="/about">About</Link> </li>
+            <li> <Link to="/create-account">Create new User</Link> </li>
           </ul>
       </div>
       <div className="App-intro">
@@ -46,6 +49,8 @@ render() {
             <Route path="/balancer" component={Balancer} />
             <Route path="/change-password" component={ChangePasswordModal} />
             <Route path="/about" component={About} />
+            <Route path="/create-account" component={UserCreate} />
+
           </Switch>
         </div>
         </BrowserRouter>
