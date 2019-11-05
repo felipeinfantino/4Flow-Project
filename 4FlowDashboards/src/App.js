@@ -10,6 +10,7 @@ import {
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
+import UserLoginForm  from './components/UserLogin';
 
 document.body.style = 'background: black;'; 
 
@@ -41,6 +42,7 @@ render() {
             <Route exact path="/" component={Planer} />
             <Route path="/balancer" component={Balancer} />
             <Route path="/about" component={About} />
+            <Route path="/login" component={UserLoginForm } />
           </Switch>
         </div>
         </BrowserRouter>

@@ -6,6 +6,7 @@
   box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
   margin-top: 70px;
   font-size: 14px;
+  text-align: left;
 }
 
 .login-form-wrapper button {
