@@ -22,7 +22,14 @@ class UserLoginForm extends React.Component {
                   <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="fadeIn fourth">
+<<<<<<< HEAD
+                  Sign In
+                </Button>
+                <Button class="btn-secondary" variant="outline-secondary" type="reset" size="sm" className="fadeIn fifth">
+                  Log Out
+=======
                   Submit
+>>>>>>> 0e5a632061f4316eab98d09d8fd81478dcf0fdfd
                 </Button>
               </Form>
             </div>
