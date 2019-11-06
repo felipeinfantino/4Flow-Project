@@ -1,4 +1,14 @@
+# Covers JetBrains IDEs
 
+# User-specific stuff
+.idea/*
+
+#Gradle and Maven with auto-import
+*.iml
+*.ipr
+
+# IntelliJ
+out/
 
 # dependencies
 4FlowDashboards/node_modules
@@ -13,6 +23,7 @@
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local

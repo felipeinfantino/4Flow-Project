@@ -65,7 +65,7 @@ export class AddTodo extends Component {
 
     render() {
         return (
-            <div>
+            <div style={ this.getStyle() }>
                 {this.state.buttonToggled ? '': <Button variant="secondary" size="sm" onClick={this.toggleButton}>Add Todo</Button>}
                 {this.state.buttonToggled ? 
                 <div style={{width: '300px', margin: '0 auto', backgroundColor: 'grey', padding: '20px', borderRadius: '10px'}}>
@@ -100,6 +100,11 @@ export class AddTodo extends Component {
                     : ''}
             </div>
         )
+    }
+    getStyle = () => {
+        return {
+          margin: '30px',
+        }
     }
 }
 
