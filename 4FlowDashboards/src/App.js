@@ -14,6 +14,7 @@ import UserLoginForm  from './components/UserLogin';
 import UserCreate from "./components/UserCreate"
 import SideBar from './components/SideBar';
 import ChangePasswordModal from './components/ChangePasswordModal';
+import resetPassword from './components/resetPassword';
 
 
 document.body.style = 'background: black;'; 
@@ -43,6 +44,7 @@ render() {
             <li> <Link to="/change-password">Change Password</Link> </li>
             <li> <Link to="/about">About</Link> </li>
             <li> <Link to="/create-account">Create new User</Link> </li>
+            <li> <Link to="/reset-password">Reset Password</Link> </li>
           </ul>
       </div>
       <div className="App-intro">
@@ -53,6 +55,7 @@ render() {
             <Route path="/about" component={About} />
             <Route path="/login" component={UserLoginForm } />
             <Route path="/create-account" component={UserCreate} />
+            <Route path="/reset-password" component={resetPassword} />
           </Switch>
         </div>
         </BrowserRouter>
