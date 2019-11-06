@@ -15,6 +15,7 @@ import UserCreate from "./components/UserCreate"
 import SideBar from './components/SideBar';
 import ChangePasswordModal from './components/ChangePasswordModal';
 import Logout from './components/auth/Logout'
+import resetPassword from './components/resetPassword';
 import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
@@ -46,6 +47,7 @@ class App extends React.Component {
                                 <li><Link to="/about">About</Link></li>
                                 <li><Link to="/create-account">Create new User</Link></li>
                                 <li><Link to="/logout">Logout</Link></li>
+                                <li> <Link to="/reset-password">Reset Password</Link> </li>
                             </ul>
                         </div>
                         <div className="App-intro">
@@ -57,6 +59,7 @@ class App extends React.Component {
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
+                                <Route path="/reset-password" component={resetPassword} />
                             </Switch>
                         </div>
                     </BrowserRouter>
