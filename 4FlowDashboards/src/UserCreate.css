@@ -1,5 +1,17 @@
 .submit-button {
-
     margin-top: 15px;
     
+}
+
+#createUserForm {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: white;
+    margin-top: 50px;
+    margin-left: 770px;
+}
+
+#userForm {
+    margin: 30px;
 }
