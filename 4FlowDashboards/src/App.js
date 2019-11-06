@@ -10,11 +10,11 @@ import {
 import Planer from './components/Planer';
 import About from './components/About';
 import Balancer from './components/Balancer';
+import UserLoginForm  from './components/auth/UserLogin';
+import UserCreate from "./components/UserCreate"
 import SideBar from './components/SideBar';
 import ChangePasswordModal from './components/ChangePasswordModal';
-
-import Login from "./components/auth/Login";
-import SignUp from "./components/auth/SignUp";
+import Logout from './components/auth/Logout'
 import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 
@@ -32,6 +32,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
+                <SideBar/>
                 <header className="App-header">
                     <h1 className="App-title">Admin</h1>
                 </header>
@@ -41,24 +42,28 @@ class App extends React.Component {
                             <ul>
                                 <li><Link to="/">Planer</Link></li>
                                 <li><Link to="/balancer">Balancer</Link></li>
+                                <li><Link to="/change-password">Change Password</Link></li>
                                 <li><Link to="/about">About</Link></li>
+                                <li><Link to="/create-account">Create new User</Link></li>
+                                <li><Link to="/logout">Logout</Link></li>
                             </ul>
                         </div>
                         <div className="App-intro">
                             <Switch>
                                 <PrivateRoute exact path="/" component={Planer}/>
                                 <PrivateRoute path="/balancer" component={Balancer}/>
+                                <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
                                 <PrivateRoute path="/about" component={About}/>
-                                <PrivateRoute exact path="/signup" component={SignUp}/>
-                                <Route exact path="/login" component={Login}/>
+                                <PrivateRoute path="/create-account" component={UserCreate}/>
+                                <PrivateRoute exact path="/logout" component={Logout}/>
+                                <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>
                         </div>
                     </BrowserRouter>
                 </AuthProvider>
             </div>
-        );
+        )
     }
-
 }
 
 export default App;
