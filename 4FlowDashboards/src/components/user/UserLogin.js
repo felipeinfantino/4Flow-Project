@@ -1,9 +1,9 @@
-import firebase from "../../Firebase";
+import firebase from "../firebase/Firebase";
 import React, {useContext} from "react";
 import {Redirect} from "react-router";
-import {AuthContext} from "../../Auth";
+import {AuthContext} from "../auth/Auth";
 import {Form, Grid, Row, Col, Button, Container} from 'react-bootstrap';
-import '../../Login.css';
+import './Login.css';
 
 const UserLoginForm = () => {
 

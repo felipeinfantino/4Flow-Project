@@ -1,22 +1,16 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    BrowserRouter,
-    Route,
-    Link,
-    Switch,
-} from 'react-router-dom'
-import Planer from './components/Planer';
-import About from './components/About';
-import Balancer from './components/Balancer';
-import UserLoginForm  from './components/auth/UserLogin';
-import UserCreate from "./components/UserCreate"
-import SideBar from './components/SideBar';
-import ChangePasswordModal from './components/ChangePasswordModal';
-import Logout from './components/auth/Logout'
-import {AuthProvider} from "./Auth";
-import PrivateRoute from "./PrivateRoute";
+import {BrowserRouter, Route, Link, Switch,} from 'react-router-dom'
+import Planer from '../planer/Planer';
+import Balancer from '../balancer/Balancer';
+import UserLoginForm from '../user/UserLogin';
+import UserCreate from "../admin/UserCreate"
+import SideBar from '../dashboard/SideBar';
+import ChangePasswordModal from '../user/ChangePasswordModal';
+import Logout from '../user/Logout'
+import {AuthProvider} from "../auth/Auth";
+import PrivateRoute from "../auth/PrivateRoute";
 
 document.body.style = 'background: black;';
 
@@ -43,7 +37,6 @@ class App extends React.Component {
                                 <li><Link to="/">Planer</Link></li>
                                 <li><Link to="/balancer">Balancer</Link></li>
                                 <li><Link to="/change-password">Change Password</Link></li>
-                                <li><Link to="/about">About</Link></li>
                                 <li><Link to="/create-account">Create new User</Link></li>
                                 <li><Link to="/logout">Logout</Link></li>
                             </ul>
@@ -53,7 +46,6 @@ class App extends React.Component {
                                 <PrivateRoute exact path="/" component={Planer}/>
                                 <PrivateRoute path="/balancer" component={Balancer}/>
                                 <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
-                                <PrivateRoute path="/about" component={About}/>
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
