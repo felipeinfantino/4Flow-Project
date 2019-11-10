@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
-import { Form } from 'react-bootstrap';
-import '../ChangePasswordModal.css';
-import { get } from 'https';
+import React, {Component} from 'react'
+import {Form} from 'react-bootstrap';
+import './ChangePasswordModal.css';
 
 
 export class ChangePasswordModal extends Component {
@@ -9,13 +8,13 @@ export class ChangePasswordModal extends Component {
         return (
             <div id="changePasswordModal">
                 <Form>
-                    <Form.Group style={ this.getGroupStyle() }>
+                    <Form.Group style={this.getGroupStyle()}>
                         <Form.Label>New Password</Form.Label>
-                        <Form.Control type="text" name="password" placeholder="Enter new password" />
-                        <br></br>
+                        <Form.Control type="text" name="password" placeholder="Enter new password"/>
+                        <br/>
                         <Form.Label>Confirm new Password</Form.Label>
-                        <Form.Control type="text" name="password-confirmation" placeholder="Confirm new password" />
-                        <br></br>
+                        <Form.Control type="text" name="password-confirmation" placeholder="Confirm new password"/>
+                        <br/>
                         <button style={this.getButtonStyle()} type="submit" className="btn btn-success">Save</button>
                         <a className="btn btn-danger" href="/">Cancel</a>
                     </Form.Group>
@@ -23,14 +22,15 @@ export class ChangePasswordModal extends Component {
             </div>
         );
     }
+
     getButtonStyle = () => {
         return {
-          marginRight: '10px',
+            marginRight: '10px',
         }
-    }
+    };
     getGroupStyle = () => {
         return {
-          margin: '30px',
+            margin: '30px',
         }
     }
 }
