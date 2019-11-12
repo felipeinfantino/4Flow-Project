@@ -7,9 +7,9 @@ export class SubTask extends Component {
             <div style={this.getSubTaskStyle(this.props.subTask.completed)}>
                 {this.props.subTask.title}
                 {this.props.subTask.completed ?
-                    <Button variant="danger" size="sm" style={{padding: '5px', margin: '10px'}}
+                    <Button variant="danger" size="sm" style={{padding: '3px', margin: '10px'}}
                             onClick={this.props.toggleSubTask.bind(this, this.props.subTask.id, this.props.todoId)}>Undo</Button> :
-                    <Button variant="success" size="sm" style={{padding: '5px', margin: '10px'}}
+                    <Button variant="success" size="sm" style={{padding: '3px', margin: '10px'}}
                             onClick={this.props.toggleSubTask.bind(this, this.props.subTask.id, this.props.todoId)}>Done</Button>}
             </div>
         )
@@ -17,11 +17,10 @@ export class SubTask extends Component {
 
     getSubTaskStyle = (completed) => {
         return {
-            padding: '10px',
             margin: '5px',
             backgroundColor: completed ? '#C8FDD3' : '#ffcccb',
             border: '1px solid black',
-            borderRadius: '10px',
+            borderRadius: '5px',
         }
     }
 }

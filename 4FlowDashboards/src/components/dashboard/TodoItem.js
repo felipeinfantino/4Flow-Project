@@ -7,7 +7,7 @@ export class TodoItem extends Component {
     render() {
         const {id, title} = this.props.todo;
         return (
-            <Card style={{border: '1px solid black', borderRadius: '10px'}}>
+            <Card style={{border: '1px solid black', borderRadius: '5px', margin: '15px', padding: '10px', backgroundColor: '#F8F8F8',}}>
                 <Accordion.Toggle as={Card.Header} eventKey={id}>
                     {title}
                 </Accordion.Toggle>
