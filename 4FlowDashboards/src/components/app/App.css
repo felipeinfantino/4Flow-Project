@@ -25,18 +25,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 25px;
   color: white;
-  height: 90px;
+  height: 95px;
 }
 
 .App-link {
   color: #09d3ac;
 }
-
-
-
-
 
 ul {
   list-style-type: none;
