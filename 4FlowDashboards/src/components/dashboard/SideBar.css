@@ -1,13 +1,20 @@
 .bm-item {
-    display: inline-block;
+    display: block;
     text-decoration: none;
-    margin-bottom: 10px;
-    color: #d1d1d1;
-    transition: color 0.2s;
+    margin-bottom: 0;
+    color: #000000;
+    transition: color .2s;
+    text-align: left;
+    padding: 15px 70px;
+    font-size: 14px;
+    border-bottom: solid 1px #007bff;
   }
   
   .bm-item:hover {
     color: white;
+    background-color: #ffffff;
+    text-decoration: none;
+    outline: none;
   }
   
   .bm-burger-button {
@@ -32,9 +39,10 @@
   }
   
   .bm-menu {
-    background: #282c34;
-    padding: 2.5em 1.5em 0;
+    background: #ffffff;
+    padding: 49px 0px;
     font-size: 1.15em;
+    border-bottom: solid 1px #007bff;
   }
   
   .bm-morph-shape {
@@ -45,6 +53,39 @@
     color: #b8b7ad;
   }
   
-  .bm-overlay {
+  .bm-overlay { 
     background: #282c34;
+  }
+  .bm-menu .bm-item-list .bm-item {
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+  .bm-item-list .bm-item:first-child {
+    background-image: url("../../assets/images/planner.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 20px;
+  }
+  .bm-item-list .bm-item:first-child {
+    background-image: url("../../assets/images/planner.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 20px;
+  }
+  .bm-item-list .bm-item:nth-child(2) {
+    background-image: url("../../assets/images/balancer.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 20px;
+    border-bottom: none;
+  }
+  .bm-item-list .bm-item:first-child:hover {
+    background-image: url("../../assets/images/planner-hover.png");
+  }
+  .bm-item-list .bm-item:nth-child(2):hover {
+    background-image: url("../../assets/images/balancer-hover.png");
+  }
+  .bm-item-list .bm-item:hover {
+    background-color: #007bff;
+    outline: none;
   }
