@@ -1,5 +1,4 @@
 import React from 'react';
-import './Planer.css';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from '../dashboard/AddTodo';
