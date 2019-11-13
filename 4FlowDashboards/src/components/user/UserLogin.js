@@ -2,7 +2,7 @@ import firebase from "../firebase/Firebase";
 import React, {useContext} from "react";
 import {Redirect} from "react-router";
 import {AuthContext} from "../auth/Auth";
-import {Form, Grid, Row, Col, Button, Container} from 'react-bootstrap';
+import {Form, Row, Col, Button, Container} from 'react-bootstrap';
 import './Login.css';
 
 const UserLoginForm = () => {
@@ -49,7 +49,7 @@ const UserLoginForm = () => {
                         </Form>
                     </div>
                     <div className="formFooter">
-                        <a className="forget-password" href="#">Forgot Password?</a>
+                        <a className="forget-password" href="/reset-password">Forgot Password?</a>
                     </div>
                 </Col>
             </Row>

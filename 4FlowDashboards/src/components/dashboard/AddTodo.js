@@ -70,7 +70,8 @@ export class AddTodo extends Component {
         return (
             <div style={this.getStyle()}>
                 {this.state.buttonToggled ? '' :
-                    <Button variant="secondary" size="sm" onClick={this.toggleButton}>Add Todo</Button>}
+                    <Button style={{ paddingLeft: '10px' }} variant="secondary" size="sm" onClick={this.toggleButton}>+ Task</Button>
+                }
                 {this.state.buttonToggled ?
                     <div style={{
                         width: '300px',
@@ -97,15 +98,15 @@ export class AddTodo extends Component {
                                     </div>
                                 )
                             })}
-                            <Button variant="secondary" onClick={this.addSubtask}>
+                            <Button className="btn btn-sm btn-dark" onClick={this.addSubtask}>
                                 Add subtask
                             </Button>
-                            <div style={{display: 'block', marginTop: '50px'}}>
-                                <Button variant="danger" onClick={this.toggleButton}>
+                            <div style={{display: 'block', marginTop: '20px'}}>
+                                <Button style={{ marginRight: '3px' }} className="btn btn-sm btn-danger" onClick={this.toggleButton}>
                                     Cancel
                                 </Button>
-                                <Button variant="primary" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
-                                    Submit
+                                <Button style={{ marginLeft: '3px' }} className="btn btn-sm btn-success" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
+                                    Add
                                 </Button>
                             </div>
                         </Form>

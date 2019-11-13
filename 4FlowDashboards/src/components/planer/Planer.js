@@ -1,5 +1,4 @@
 import React from 'react';
-import '../app/App.css';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from '../dashboard/AddTodo';
@@ -162,13 +161,14 @@ class Planer extends React.Component {
                     {Object.keys(columnNames).map((state) => {
                         return (
                             <div key={state} style={{width: '25vw'}}>
-                                <h2 style={{
+                                <h5 style={{
                                     backgroundColor: '#F8F8F8',
                                     border: '1px solid black',
-                                    borderRadius: '10px',
-                                    margin: '3px',
-                                    padding: '10px'
-                                }}>{columnNames[state]}</h2>
+                                    borderRadius: '5px',
+                                    margin: '15px',
+                                    padding: '10px',
+                                    fontStyle: 'bold'
+                                }}>{columnNames[state]}</h5>
                                 <Todos todos={this.state.todos.filter((todo) => todo.status === columnNames[state])}
                                        deleteItem={this.deleteItem}
                                        shiftItem={this.shiftItem}
