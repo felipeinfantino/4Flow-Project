@@ -9,6 +9,7 @@ import UserLoginForm from '../user/UserLogin';
 import UserCreate from "../admin/UserCreate"
 import SideBar from '../dashboard/SideBar';
 import ChangePasswordModal from '../user/ChangePasswordModal';
+import ResetPassword from '../user/ResetPassword';
 import Logout from '../user/Logout'
 import {AuthProvider} from "../auth/Auth";
 import PrivateRoute from "../auth/PrivateRoute";
@@ -43,6 +44,7 @@ class App extends React.Component {
                                 <Nav style={this.getNavUserStyle()}>
                                     <NavDropdown title="User" id="basic-nav-dropdown">
                                         <NavDropdown.Item><Link to="/change-password">Change Password</Link></NavDropdown.Item>
+                                        <NavDropdown.Item><Link to="/reset-password">Reset Password</Link></NavDropdown.Item>
                                         <NavDropdown.Item><Link to="/create-account">Create new User</Link></NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item><Link to="/logout">Logout</Link></NavDropdown.Item>
@@ -55,6 +57,7 @@ class App extends React.Component {
                                 <PrivateRoute exact path="/" component={Planer}/>
                                 <PrivateRoute path="/balancer" component={Balancer}/>
                                 <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
+                                <PrivateRoute path="/reset-password" component={ResetPassword}/>
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
