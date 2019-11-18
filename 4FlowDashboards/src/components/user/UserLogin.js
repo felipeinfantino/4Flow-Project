@@ -10,15 +10,24 @@ const UserLoginForm = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        // const {email, password} = event.target.elements;
-        try {
-            firebase
-                .auth()
-                .signInWithEmailAndPassword("amostuproject@gmail.com", "password");
+        
+        let email = document.getElementById('formBasicEmail').value;
+        let password = document.getElementById('formBasicPassword').value;
 
-        } catch (error) {
-            alert(error);
-        }
+        return firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+            
+        }).catch(function(error) {
+            let msg = document.getElementById('loginMsg');
+            if (msg.style.display === "none") {
+                msg.style.display = "inline-flex";
+            } else {
+                msg.style.display = "none";
+            }
+    
+            setInterval(function() {
+                msg.style.display = "none";
+            }, 2000);
+        });
     };
 
     function resetPassword() {
@@ -72,6 +81,11 @@ const UserLoginForm = () => {
             <Row>
                 <Col md={{span: 4, offset: 4}}>
                     <div className="login-form-wrapper">
+                        <div id="loginMsg" className="row" style={{ marginTop: '10px', display: 'none' }}>
+                            <div className="col-md-12">
+                                <p style={{ color: 'darkred' }}>Credentials could not been found. Please re-enter a valid e-mail and password.</p>
+                            </div>
+                        </div>
                         <Form onSubmit={handleLogin}>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Control type="email" placeholder="Enter email" className="fadeIn second"/>
