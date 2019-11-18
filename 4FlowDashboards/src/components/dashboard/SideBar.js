@@ -6,6 +6,16 @@ import {AuthContext} from "../auth/Auth";
 import './SideBar.css';
 
 const SideBar = () => {
+
+    //firebase
+    var ref = firebase.database().ref();
+      ref.on("value", function(snapshot) {
+         console.log(snapshot.val());
+      }, function (error) {
+         console.log("Error: " + error.code);
+      });
+
+    //firebase ends
     let userRole = "planner";
     let roleRedirect;
 
