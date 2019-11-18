@@ -13,6 +13,7 @@ import ResetPassword from '../user/ResetPassword';
 import Logout from '../user/Logout'
 import {AuthProvider} from "../auth/Auth";
 import PrivateRoute from "../auth/PrivateRoute";
+import firebase from "../firebase/Firebase";
 
 document.body.style = 'background: black;';
 
@@ -41,6 +42,7 @@ class App extends React.Component {
                                     <Nav.Link><Link to="/">Planer</Link></Nav.Link>
                                     <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                                 </Nav>
+
                                 <Nav style={this.getNavUserStyle()}>
                                     <NavDropdown title="User" id="basic-nav-dropdown">
                                         <NavDropdown.Item><Link to="/change-password">Change Password</Link></NavDropdown.Item>
