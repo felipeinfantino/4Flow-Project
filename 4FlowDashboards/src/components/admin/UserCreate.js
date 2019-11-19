@@ -5,9 +5,29 @@ import { Redirect } from 'react-router-dom'
 var dir = false;
 
 
+function writeUserData(email, passW,role,userID) {
+    return firebase.database().ref('/users/' + userID).once('value').then(function(snapshot) {
+        if (snapshot.val() !== null) {
+            alert("Username already exists, please choose another username");
+        }else{
+            //alert("doesnt exists")
+            writeUserDataHelp(email, passW,role,userID);
+            dir = true;
+            firebase.auth().signOut();
+
+        }
+    });
+}
 
 
+function writeUserDataHelp(email, passW,role,userID) {
 
+    firebase.database().ref('users/'+userID).set({
+        email: email,
+        password: passW,
+        userRole:role,
+    });
+}
 class UserCreate extends Component{
      constructor(props) {
         super(props);
@@ -28,16 +48,18 @@ class UserCreate extends Component{
     handleSubmit = (e) => {
         const myForm = {
             email: this.state.email,
-            username: this.state.username,
             userpassword: this.state.userpassword,
             role: this.state.role
         }
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.userpassword)
-        .then(()=>{
+        .then(data=>{
             console.log('Signup successful.');
+            alert(data.user.uid)
+             
             this.setState({
                     response: 'Account Created!'
                 })
+            writeUserData(myForm.email, myForm.userpassword,myForm.role,data.user.uid)
             firebase.auth().signOut();
 
            })
