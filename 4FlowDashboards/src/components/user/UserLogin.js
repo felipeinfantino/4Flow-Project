@@ -3,10 +3,14 @@ import React, {useContext} from "react";
 import {Redirect} from "react-router";
 import {AuthContext} from "../auth/Auth";
 import {Form, Row, Col, Button, Container} from 'react-bootstrap';
+import {SideBar} from '../dashboard/SideBar';
 import './Login.css';
 
 const UserLoginForm = () => {
+
     const {currentUser} = useContext(AuthContext);
+
+    const greeting = 'Hello Function Component!';
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -76,7 +80,8 @@ const UserLoginForm = () => {
     }
 
     return (
-        //layout starts
+        <div>
+        <SideBar name={greeting}/>
         <Container>
             <Row>
                 <Col md={{span: 4, offset: 4}}>
@@ -126,7 +131,7 @@ const UserLoginForm = () => {
                     </div>
                 </Col>
             </Row>
-        </Container>
+        </Container></div>
     );
 };
 

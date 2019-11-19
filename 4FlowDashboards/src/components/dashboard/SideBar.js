@@ -5,7 +5,7 @@ import {Redirect} from "react-router";
 import {AuthContext} from "../auth/Auth";
 import './SideBar.css';
 
-const SideBar = () => {
+export const SideBar = () => {
 
     //firebase
     var ref = firebase.database().ref();
@@ -33,7 +33,7 @@ const SideBar = () => {
         return (
             <Menu>
                 <a className="menu-item" href={roleRedirect}>
-                    {userRole}
+                    {this.props.name}
                 </a>
             </Menu>
         );
