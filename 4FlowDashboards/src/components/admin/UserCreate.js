@@ -4,23 +4,26 @@ import firebase from "../firebase/Firebase";
 import { Redirect } from 'react-router-dom'
 var dir = false;
 
-function writeUserData(name, passW,role) {
-  return firebase.database().ref('/users/' + name).once('value').then(function(snapshot) {
-      if (snapshot.val() !== null) {
-        alert("Username already exists, please choose another name");
-      }else{
-        //alert("doesnt exists")
-        writeUserDataHelp(name, passW,role);
-        dir = true;
-        firebase.auth().signOut();
+
+function writeUserData(email, passW,role,username) {
+    return firebase.database().ref('/users/' + username).once('value').then(function(snapshot) {
+        if (snapshot.val() !== null) {
+            alert("Username already exists, please choose another username");
+        }else{
+            //alert("doesnt exists")
+            writeUserDataHelp(email, passW,role,username);
+            dir = true;
+            firebase.auth().signOut();
         
-      }
+        }
     });
 }
 
-function writeUserDataHelp(name, passW,role) {
-    firebase.database().ref('users/'+name).set({
-        username: name,
+function writeUserDataHelp(email, passW,role,username) {
+
+    firebase.database().ref('users/'+username).set({
+        email: email,
+        username: username,
         password: passW,
         userRole:role,
     });
@@ -29,9 +32,9 @@ function writeUserDataHelp(name, passW,role) {
 
 function readUserData(name){
 return firebase.database().ref('/users/' + name).once('value').then(function(snapshot) {
-  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  var email = (snapshot.val() && snapshot.val().username) || 'Anonymous';
   if (snapshot.val() !== null) {
-        alert("Your username is: "+username)
+        alert("Your email is: "+name)
       }else{
         alert("Username does not exist")
       }
@@ -43,7 +46,8 @@ class UserCreate extends Component{
      constructor(props) {
         super(props);
         this.state = {
-            username: ' ',
+            email: ' ',
+            username: '',
             userpassword: ' ',
             role : 'External'
         };
@@ -57,12 +61,12 @@ class UserCreate extends Component{
     }
     handleSubmit = (e) => {
         const myForm = {
+            email: this.state.email,
             username: this.state.username,
             userpassword: this.state.userpassword,
             role: this.state.role
         }
-        //readUserData(myForm.username)
-        writeUserData(myForm.username, myForm.userpassword,myForm.role);
+        writeUserData(myForm.email, myForm.userpassword,myForm.role,myForm.username);
         if(dir === true){
             dir = false;
         }else{
@@ -73,20 +77,32 @@ class UserCreate extends Component{
     render(){
         return(
             <div id="createUserForm">
-                <form onSubmit={this.handleSubmit} id="userForm">
+                <form onSubmit={this.handleSubmit} id="emailForm">
                     <div className="form-group">
-                        <label htmlFor="usernameInput">Username</label>
+                        <label htmlFor="emailInput">Email</label>
                         <input 
-                            name='username'
-                            value={this.state.username}
+                            name='email'
+                            value={this.state.email}
                             onChange={e => this.handleChange(e)} 
-                            type="text" 
+                            type="email" 
                             className="form-control" 
                             id="usernameInput" 
                             aria-describedby="emailHelp" 
-                            placeholder="Enter new username">
+                            placeholder="Enter your email">
                         </input>
                         
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="usernameInput">Username</label>
+                        <input 
+                        name='username'
+                        value={this.state.username} 
+                        defaultValue={this.state.value}
+                        onChange={e => this.handleChange(e)} 
+                        type="text" 
+                        className="form-control" 
+                        id="username" 
+                        placeholder="Username" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Password</label>
