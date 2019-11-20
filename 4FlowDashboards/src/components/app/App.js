@@ -5,6 +5,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import {BrowserRouter, Route, Link, Switch,} from 'react-router-dom'
 import Planer from '../planer/Planer';
 import Balancer from '../balancer/Balancer';
+import Admin from '../admin/Admin';
 import UserLoginForm from '../user/UserLogin';
 import UserCreate from "../admin/UserCreate"
 import SideBar from '../dashboard/SideBar';
@@ -40,6 +41,7 @@ class App extends React.Component {
                                 <Nav className="mr-auto">
                                     <Nav.Link><Link to="/">Planer</Link></Nav.Link>
                                     <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
+                                    <Nav.Link><Link to="/admin">Admin</Link></Nav.Link>
                                 </Nav>
                                 <Nav style={this.getNavUserStyle()}>
                                     <NavDropdown title="User" id="basic-nav-dropdown">
@@ -56,6 +58,7 @@ class App extends React.Component {
                             <Switch>
                                 <PrivateRoute exact path="/" component={Planer}/>
                                 <PrivateRoute path="/balancer" component={Balancer}/>
+                                <PrivateRoute path="/admin" component={Admin}/>
                                 <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
                                 <PrivateRoute path="/reset-password" component={ResetPassword}/>
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
