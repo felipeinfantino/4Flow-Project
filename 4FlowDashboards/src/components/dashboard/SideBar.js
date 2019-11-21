@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, useContext} from 'react'
 import {slide as Menu} from 'react-burger-menu';
 import firebase from "../firebase/Firebase";
 import {Redirect} from "react-router";
@@ -6,36 +6,61 @@ import {AuthContext} from "../auth/Auth";
 import './SideBar.css';
 
 export const SideBar = () => {
+const auth = useContext(AuthContext);
+console.log({auth});
 
-    //firebase
-    var ref = firebase.database().ref();
-      ref.on("value", function(snapshot) {
-         console.log(snapshot.val());
-      }, function (error) {
-         console.log("Error: " + error.code);
-      });
+let user = firebase.auth().currentUser;
+let email, userRoles, roleRedirect;
 
-    //firebase ends
-    let userRole = "planner";
-    let roleRedirect;
+if (user != null) {
+  email = user.email;
+  console.log(email);
+}
 
-    if(userRole === "balancer") {
-      userRole = "balancer";
-      roleRedirect = "/balancer"
-    }
-    else if(userRole === "planner") {
-      userRole = "planner";
+async function myPromise() {
+  return new Promise((resolve, reject) => {
+    var usersRef = firebase.database().ref("users/");
+    usersRef.on("child_added", function(data) {
+      var newVal = data.val();
+      if(newVal.email === email) {
+        userRoles = newVal.userRole;
+        resolve(userRoles);
+      }
+    })
+  })   
+}
+
+async function callingDB() {
+  try {
+    let callingDBFunction = await myPromise(); 
+    console.log(callingDBFunction); 
+    userRoles = callingDBFunction;
+    console.log(userRoles);
+    if(userRoles==="planer") {
       roleRedirect = "/planner";
     }
-    else {
-      userRole = "admin";
+    else if(userRoles === "balancer") {
+      roleRedirect = "/balancer";
     }
+    else {
+      roleRedirect = "/admin";
+    }
+  }
+  catch(error) {
+    console.log(error);
+  }
+}
+
+callingDB();
+    
         return (
-            <Menu>
-                <a className="menu-item" href={roleRedirect}>
-                    {this.props.name}
+            
+           <Menu>
+              <a className="menu-item" href="/link2">
+                    Placeholder 2
                 </a>
             </Menu>
+      
         );
 };
 
