@@ -25,7 +25,7 @@ export const columnNames = {
     WAITING: 'Waiting',
     DONE: 'Done',
 };
-var role;
+
 class App extends React.Component {
     render() {
         return (
