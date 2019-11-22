@@ -4,15 +4,15 @@ import firebase from "../firebase/Firebase";
 import {Redirect} from "react-router";
 import {AuthContext} from "../auth/Auth";
 import './SideBar.css';
-
 export const SideBar = () => {
 const auth = useContext(AuthContext);
-console.log({auth});
+
 
 let user = firebase.auth().currentUser;
 let email, userRoles, roleRedirect;
 
 if (user != null) {
+  console.log(user);
   email = user.email;
   console.log(email);
 }

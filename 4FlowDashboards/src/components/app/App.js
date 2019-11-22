@@ -14,6 +14,8 @@ import Logout from '../user/Logout'
 import {AuthProvider} from "../auth/Auth";
 import PrivateRoute from "../auth/PrivateRoute";
 import firebase from "../firebase/Firebase";
+import NoAcess from './noAccess'
+import Startpage from './startpage'
 
 document.body.style = 'background: black;';
 
@@ -23,9 +25,8 @@ export const columnNames = {
     WAITING: 'Waiting',
     DONE: 'Done',
 };
-
+var role;
 class App extends React.Component {
-
     render() {
         return (
             <div className="App">
@@ -61,6 +62,8 @@ class App extends React.Component {
                                 <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
                                 <PrivateRoute path="/reset-password" component={ResetPassword}/>
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
+                                <PrivateRoute path="/noAccess" component={NoAcess}/>
+                                <PrivateRoute path="/startpage" component={Startpage}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>

@@ -34,7 +34,6 @@ class UserCreate extends Component{
         this.state = {
             email: ' ',
             username: '',
-            userpassword: ' ',
             role : 'External'
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,8 +53,6 @@ class UserCreate extends Component{
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.userpassword)
         .then(data=>{
             console.log('Signup successful.');
-            alert(data.user.uid)
-             
             this.setState({
                     response: 'Account Created!'
                 })

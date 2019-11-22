@@ -5,9 +5,19 @@ import {AuthContext} from "../auth/Auth";
 import {Form, Row, Col, Button, Container} from 'react-bootstrap';
 import {SideBar} from '../dashboard/SideBar';
 import './Login.css';
+var userRole = 'noROLE';
+
+export function setRole(role){
+        userRole = role
+}
+
+export function getRole(){
+    return userRole;
+}
+
 
 const UserLoginForm = () => {
-
+   
     const {currentUser} = useContext(AuthContext);
 
     const greeting = 'Hello Function Component!';
@@ -18,7 +28,7 @@ const UserLoginForm = () => {
         let email = document.getElementById('formBasicEmail').value;
         let password = document.getElementById('formBasicPassword').value;
 
-        return firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
+        return firebase.auth().signInWithEmailAndPassword(email, password).then(data=> {
             
         }).catch(function(error) {
             let msg = document.getElementById('loginMsg');
@@ -76,9 +86,16 @@ const UserLoginForm = () => {
     }
 
     if (currentUser) {
-        return <Redirect to="/"/>;
+        //{`/startpage/${getRole()}`}
+        firebase.database().ref('/users/' + currentUser.uid).once('value').then(function(snapshot) {
+                var role = (snapshot.val() && snapshot.val().userRole) || 'Anonymous';
+                if (snapshot.val() !== null) {
+                    setRole(role);
+                  }
+            })
+        //console.log(window.location.href); 
+        return <Redirect to={`/startpage/${"ID="+getRole()}`}/>;
     }
-
     return (
         <div>
         <SideBar name={greeting}/>
