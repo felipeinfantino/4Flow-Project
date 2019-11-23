@@ -17,7 +17,7 @@ class Balancer extends React.Component {
         todos: [
             {
                 id: uuidv4(),
-                title: 'Deliver Equipment Berlin - Hamburg',
+                title: 'Perry Equipment Berlin - Hamburg',
                 status: columnNames.WAITING,
                 subTasks: [
                     {
