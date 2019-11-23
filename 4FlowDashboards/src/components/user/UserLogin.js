@@ -20,8 +20,6 @@ const UserLoginForm = () => {
    
     const {currentUser} = useContext(AuthContext);
 
-    const greeting = 'Hello Function Component!';
-
     const handleLogin = (event) => {
         event.preventDefault();
         
@@ -97,8 +95,6 @@ const UserLoginForm = () => {
         return <Redirect to={`/startpage/${"ID="+getRole()}`}/>;
     }
     return (
-        <div>
-        <SideBar name={greeting}/>
         <Container>
             <Row>
                 <Col md={{span: 4, offset: 4}}>
@@ -148,7 +144,7 @@ const UserLoginForm = () => {
                     </div>
                 </Col>
             </Row>
-        </Container></div>
+        </Container>
     );
 };
 
