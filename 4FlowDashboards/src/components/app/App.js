@@ -16,6 +16,7 @@ import PrivateRoute from "../auth/PrivateRoute";
 import firebase from "../firebase/Firebase";
 import NoAcess from './noAccess'
 import Startpage from './startpage'
+import EmailResp from '../email/emailResponse'
 
 document.body.style = 'background: black;';
 
@@ -64,6 +65,7 @@ class App extends React.Component {
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
                                 <PrivateRoute path="/noAccess" component={NoAcess}/>
                                 <PrivateRoute path="/startpage" component={Startpage}/>
+                                <PrivateRoute path="/email" component={EmailResp}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>
