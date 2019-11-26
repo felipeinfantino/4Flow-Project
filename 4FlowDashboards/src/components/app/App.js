@@ -66,8 +66,8 @@ class App extends React.Component {
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
                                 <PrivateRoute path="/noAccess" component={NoAcess}/>
                                 <PrivateRoute path="/startpage" component={Startpage}/>
-                                <PrivateRoute path="/email" component={EmailResp}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
+                                <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>
                         </div>
