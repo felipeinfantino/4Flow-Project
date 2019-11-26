@@ -42,8 +42,6 @@ class App extends React.Component {
                                 <Nav className="mr-auto">
                                     <Nav.Link><Link to="/">Planer</Link></Nav.Link>
                                     <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
-                                    <Nav.Link><Link to={`/email/${"?CID="+'884545fafad56as4d321'+'?'+'TID='+'nfcveePOnNY4Ds3bD9Ss'+'?'+'PID='+'wcW9F0icYsT8BDj8U91BFi5pqMr2'}`}>Email-ResponseLink1</Link></Nav.Link>
-                                    <Nav.Link><Link to={`/email/${"?CID="+'iweruwehiaioggf556646'+'?'+'TID='+'qZVqYvyzvN3UWCEaw4ig'+'?'+'PID='+'wcW9F0icYsT8BDj8U91BFi5pqMr2'}`}>Email-ResponseLink2</Link></Nav.Link>
                                 </Nav>
 
                                 <Nav style={this.getNavUserStyle()}>
