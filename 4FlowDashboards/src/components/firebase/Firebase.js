@@ -2,7 +2,7 @@ import * as firebaseApp from 'firebase/app';
 
 require('firebase/auth');
 require('firebase/database');
-
+require("firebase/firestore");
 const firebaseConfig = {
     apiKey: "AIzaSyBcdL_1pVMBFcJgaiiuQCIM8YfjbUADjeg",
     authDomain: "flowdashboard-6c548.firebaseapp.com",
