@@ -43,7 +43,7 @@ class App extends React.Component {
                                 <Nav className="mr-auto">
                                     <Nav.Link><Link to="/">Planer</Link></Nav.Link>
                                     <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
-                                    <Nav.Link><Link to="/contact">Contact Template</Link></Nav.Link>
+                                    <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                                 </Nav>
 
                                 <Nav style={this.getNavUserStyle()}>
@@ -64,7 +64,7 @@ class App extends React.Component {
                                 <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
                                 <PrivateRoute path="/reset-password" component={ResetPassword}/>
                                 <PrivateRoute path="/create-account" component={UserCreate}/>
-                                <PrivateRoute path="/contact" component={SupplierContact}/>
+                                <PrivateRoute path="/contacts" component={SupplierContact}/>
                                 <PrivateRoute path="/noAccess" component={NoAcess}/>
                                 <PrivateRoute path="/startpage" component={Startpage}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
