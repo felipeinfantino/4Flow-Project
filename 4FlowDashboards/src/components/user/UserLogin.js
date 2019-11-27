@@ -35,10 +35,6 @@ const UserLoginForm = () => {
             } else {
                 msg.style.display = "none";
             }
-    
-            setInterval(function() {
-                msg.style.display = "none";
-            }, 2000);
         });
     };
 
