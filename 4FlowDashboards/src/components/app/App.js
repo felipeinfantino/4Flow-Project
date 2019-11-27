@@ -14,11 +14,10 @@ import ResetPassword from '../user/ResetPassword';
 import Logout from '../user/Logout'
 import {AuthProvider} from "../auth/Auth";
 import PrivateRoute from "../auth/PrivateRoute";
-import firebase from "../firebase/Firebase";
 import NoAcess from './noAccess'
 import Startpage from './startpage'
-
-document.body.style = 'background: black;';
+import EmailResp from '../email/emailResponse'
+import EmailNoAccess from '../email/emailNOAccess'
 
 export const columnNames = {
     TO_DO: 'To do',
@@ -68,6 +67,8 @@ class App extends React.Component {
                                 <PrivateRoute path="/noAccess" component={NoAcess}/>
                                 <PrivateRoute path="/startpage" component={Startpage}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
+                                <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
+                                <Route path="/emailNoAccess" component={EmailNoAccess}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>
                         </div>
