@@ -16,8 +16,7 @@ import PrivateRoute from "../auth/PrivateRoute";
 import NoAcess from './noAccess'
 import Startpage from './startpage'
 import EmailResp from '../email/emailResponse'
-
-document.body.style = 'background: black;';
+import EmailNoAccess from '../email/emailNOAccess'
 
 export const columnNames = {
     TO_DO: 'To do',
@@ -66,6 +65,7 @@ class App extends React.Component {
                                 <PrivateRoute path="/startpage" component={Startpage}/>
                                 <PrivateRoute exact path="/logout" component={Logout}/>
                                 <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
+                                <Route path="/emailNoAccess" component={EmailNoAccess}/>
                                 <Route exact path="/login" component={UserLoginForm}/>
                             </Switch>
                         </div>
