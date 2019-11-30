@@ -1,23 +1,9 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import {BrowserRouter, Route, Link, Switch,} from 'react-router-dom'
-import Planer from '../planer/Planer';
-import SupplierContact from '../planer/SupplierContact';
-import Balancer from '../balancer/Balancer';
-import UserLoginForm from '../user/UserLogin';
-import UserCreate from "../admin/UserCreate"
 import SideBar from '../dashboard/SideBar';
-import ChangePasswordModal from '../user/ChangePasswordModal';
-import ResetPassword from '../user/ResetPassword';
-import Logout from '../user/Logout'
 import {AuthProvider} from "../auth/Auth";
-import PrivateRoute from "../auth/PrivateRoute";
-import NoAcess from './noAccess'
-import Startpage from './startpage'
-import EmailResp from '../email/emailResponse'
-import EmailNoAccess from '../email/emailNOAccess'
+import Routes from './Routes'
 
 export const columnNames = {
     TO_DO: 'To do',
@@ -35,52 +21,10 @@ class App extends React.Component {
                     <div className="App-title">4Flow-Dashboard</div>
                 </header>
                 <AuthProvider>
-                    <BrowserRouter>
-                        <Navbar bg="light" expand="lg">
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="mr-auto">
-                                    <Nav.Link><Link to="/">Planer</Link></Nav.Link>
-                                    <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
-                                    <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
-                                </Nav>
-
-                                <Nav style={this.getNavUserStyle()}>
-                                    <NavDropdown title="User" id="basic-nav-dropdown">
-                                        <NavDropdown.Item><Link to="/change-password">Change Password</Link></NavDropdown.Item>
-                                        <NavDropdown.Item><Link to="/reset-password">Reset Password</Link></NavDropdown.Item>
-                                        <NavDropdown.Item><Link to="/create-account">Create new User</Link></NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item><Link to="/logout">Logout</Link></NavDropdown.Item>
-                                    </NavDropdown>
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Navbar>
-                        <div className="App-intro">
-                            <Switch>
-                                <PrivateRoute exact path="/" component={Planer}/>
-                                <PrivateRoute path="/balancer" component={Balancer}/>
-                                <PrivateRoute path="/change-password" component={ChangePasswordModal}/>
-                                <PrivateRoute path="/reset-password" component={ResetPassword}/>
-                                <PrivateRoute path="/create-account" component={UserCreate}/>
-                                <PrivateRoute path="/contacts" component={SupplierContact}/>
-                                <PrivateRoute path="/noAccess" component={NoAcess}/>
-                                <PrivateRoute path="/startpage" component={Startpage}/>
-                                <PrivateRoute exact path="/logout" component={Logout}/>
-                                <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
-                                <Route path="/emailNoAccess" component={EmailNoAccess}/>
-                                <Route exact path="/login" component={UserLoginForm}/>
-                            </Switch>
-                        </div>
-                    </BrowserRouter>
+                    <Routes/>
                 </AuthProvider>
             </div>
         )
-    }
-    getNavUserStyle = () => {
-        return {
-            paddingRight: '100px',
-        }
     }
 }
 
