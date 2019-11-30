@@ -1,10 +1,8 @@
 import React from 'react';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {getRole} from '../user/UserLogin'
-import {Redirect} from "react-router";
+
 const uuidv4 = require('uuid/v4');
-document.body.style = 'background: black;';
 
 export const columnNames = {
     WAITING: 'Waiting',
@@ -40,7 +38,7 @@ class Balancer extends React.Component {
             },
         ],
         newTodoTitle: '',
-        statusOrder: [columnNames.WAITING, columnNames.IN_REVIEW ,columnNames.DONE],
+        statusOrder: [columnNames.WAITING, columnNames.IN_REVIEW, columnNames.DONE],
     };
 
 
@@ -112,7 +110,7 @@ class Balancer extends React.Component {
                 }
                 break;
             default:
-              break;
+                break;
             // code block
         }
     };
@@ -135,14 +133,9 @@ class Balancer extends React.Component {
     };
 
     render() {
-        console.log(getRole());
-        if(getRole()!='Balancer'){
-            return <Redirect to='/noAccess'/>
-                    
-        }
         return (
             <div>
-                <div style={this.getStyle()}>
+                <div style={{display: 'flex'}}>
                     {Object.keys(columnNames).map((state) => {
                         return (
                             <div key={state} style={{width: '25vw'}}>
@@ -166,13 +159,6 @@ class Balancer extends React.Component {
 
             </div>
         );
-    }
-
-
-    getStyle = () => {
-        return {
-            display: 'flex',
-        }
     }
 }
 

@@ -2,10 +2,8 @@ import React from 'react';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from '../dashboard/AddTodo';
-import {getRole} from '../user/UserLogin'
-import {Redirect} from "react-router";
+
 const uuidv4 = require('uuid/v4');
-document.body.style = 'background: black;';
 
 
 export const columnNames = {
@@ -154,16 +152,12 @@ class Planer extends React.Component {
             })
         })
     };
+
     render() {
-        console.log(getRole());
-        if(getRole()!='Planer'){
-            return <Redirect to='/noAccess'/>
-                    
-        }
         return (
             <div>
                 <AddTodo addTodo={this.addTodo}/>
-                <div style={this.getStyle()}>
+                <div style={{display: 'flex'}}>
                     {Object.keys(columnNames).map((state) => {
                         return (
                             <div key={state} style={{width: '25vw'}}>
@@ -187,13 +181,6 @@ class Planer extends React.Component {
 
             </div>
         );
-    }
-
-
-    getStyle = () => {
-        return {
-            display: 'flex',
-        }
     }
 }
 
