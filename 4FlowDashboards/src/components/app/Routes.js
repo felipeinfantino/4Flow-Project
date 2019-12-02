@@ -97,7 +97,7 @@ const Routes = () => {
                     <PrivateRoute path="/balancer" component={Balancer}/>
                     <PrivateRoute path="/reset-password" component={ResetPassword}/>
                     <PrivateRoute path="/create-account" component={UserCreate}/>
-                    <PrivateRoute path="/contacts" component={SupplierContact}/>
+                    <Route path="/contacts" component={SupplierContact}/>
                     <PrivateRoute exact path="/logout" component={Logout}/>
                     <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                     <Route path="/emailNoAccess" component={EmailNoAccess}/>

@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import firebase from "../firebase/Firebase";
+// const cryptoRandomString = require('crypto-random-string');
+var db =  firebase.firestore();
 
 export class SupplierContact extends Component {
+
     state = {
         startDate: new Date()
       };
@@ -12,12 +16,48 @@ export class SupplierContact extends Component {
           startDate: date
         });
       };
+
+      handleSubmit = (event) => {
+        event.preventDefault();
+        let suppliersCheckBox = document.getElementsByName('suppliers[]');
+        let date = document.getElementsByName('datepicker')[0].value;
+        let type = document.getElementsByName('contract_type')[0].value;
+        let subject = document.getElementsByName('subject')[0].value;
+        let body = document.getElementsByName('mailBody')[0].value;
+
+        let suppliers = [];
+        suppliersCheckBox.forEach((element) => {
+            if (element.checked) {
+                suppliers.push(element.value);
+            }
+        });
+        
+        suppliers.forEach(supplier => {
+            // var newKey = cryptoRandomString({length: 20});
+
+            var data = {
+                mail: supplier,
+                date: date,
+                type: type,
+                subject: subject,
+                body: body
+            }
+
+            db.collection("Aufträge").add(data).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+
+        });
+      }
     
     render() {
         return (
             <div id="contact-template">
                 <div className="template-body">
-                    <form action="/contacts/sendMails" method="POST">
+                    <form onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="col-md-3">
                                 <div className="form-group" style={{ marginTop: '40px', marginLeft: '100px', textAlign: 'left' }}>
@@ -40,7 +80,7 @@ export class SupplierContact extends Component {
                                                             Mircosoft 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Microsoft"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="microsoft@mail.com"></input> 
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -48,7 +88,7 @@ export class SupplierContact extends Component {
                                                             Google 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Google"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="google@mail.com"></input> 
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -56,7 +96,7 @@ export class SupplierContact extends Component {
                                                             Amazon 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Amazon"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="amazon@mail.com"></input> 
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -64,7 +104,7 @@ export class SupplierContact extends Component {
                                                             Apple 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Apple"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="apple@mail.com"></input> 
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -72,7 +112,7 @@ export class SupplierContact extends Component {
                                                             Netflix 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Netflix"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="netflix@mail.com"></input> 
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -96,6 +136,7 @@ export class SupplierContact extends Component {
                                             timeCaption="time"
                                             dateFormat="d.M.Y h:mm aa"
                                             className="form-control"
+                                            name="datepicker"
                                         />
                                     </div>
                                     <div className="row" style={{ marginTop: '20px' }}>
