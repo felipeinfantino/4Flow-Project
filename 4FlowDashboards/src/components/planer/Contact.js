@@ -12,16 +12,13 @@ class Contact extends React.Component {
                     <legend class="contact-legend">Company name</legend>
                         <div class="contact-details">
                             <div class="address">
-                                <span>Address</span>
-                                <input id="address" type="text" value="Sewanstrasse" type="text" disabled />
+                                <span>Address</span><input id="address" type="text" value="Sewanstrasse" type="text" disabled />
                             </div>
                             <div class="email">
-                                <span >Email address</span>
-                                <input id="email" type="text" value="email@gmail.com" disabled/>
+                                <span >Email address</span><input id="email" type="text" value="email@gmail.com" disabled/>
                             </div>
                             <div class="phone">
-                                <span>Phone number</span>
-                                <input id="phone" type="text" value="1234567890" disabled/>
+                                <span>Phone number</span><input id="phone" type="text" value="1234567890" disabled/>
                             </div>
                         </div> 
                         <div>

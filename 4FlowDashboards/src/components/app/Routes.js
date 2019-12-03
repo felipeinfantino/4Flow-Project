@@ -18,6 +18,7 @@ import CreateRoute from "../planer/CreateRoute"
 import RoutingInstr from "../planer/RoutingInstr"
 import Notifications from "../planer/Notifications"
 import Contact from "../planer/Contact"
+import ChangeMasterData from "../planer/ChangeMasterData"
 
 
 const NavItems = () => {
@@ -35,6 +36,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
             </Nav>
         );
     } else if (state.user.role === "Planer") {
@@ -46,6 +48,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
             </Nav>
         );
     } else {
@@ -56,6 +59,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
             </Nav>
         );
     }
@@ -123,6 +127,7 @@ const Routes = () => {
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
                     <PrivateRoute path="/contact" component={Contact}/>
+                    <PrivateRoute path="/masterdata" component={ChangeMasterData}/>
                 </Switch>
             </div>
         </BrowserRouter>)

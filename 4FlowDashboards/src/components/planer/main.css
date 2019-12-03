@@ -330,3 +330,56 @@ span {
 .gray {
     background-color: #ebebe4;
 }
+
+
+/* Change Master Data */
+
+fieldset.master-data {
+    width: 1100px;
+    height: 480px;
+    margin-top: 34px;
+    border: solid black 1px !important;
+    padding: 1px;
+    padding-right: 35px;
+    margin-left: 83px;
+}
+
+legend.master-data-legend {
+    font-size: smaller !important;
+    font-weight: 300 !important;
+    text-align: left !important;
+    width: auto;
+    padding: 0 10px;
+    border-bottom: none !important;
+}
+
+.data-row {
+    margin: 0 !important;
+    margin-top: 50px !important;
+    margin-bottom: 50px !important;
+}
+
+.data-row span {
+    float: left;
+    margin-right: 12px;
+}
+.data-row input {
+    border: none;
+    width: inherit;
+    border-bottom: 1px solid black;
+    font-style: italic;
+    font-weight: 300;
+}
+.data-col {
+    padding-left: 45px !important;
+    padding-right: 1px !important;
+
+}
+
+.master-data-submission {
+    float: right;
+}
+.master-data-submission button {
+    width: 200px !important;
+    margin-right: 100px !important;
+}
