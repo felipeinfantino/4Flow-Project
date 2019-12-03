@@ -14,6 +14,11 @@ import StartPage from "./startpage";
 import EmailResp from "../email/emailResponse";
 import EmailNoAccess from "../email/emailNOAccess";
 
+import CreateRoute from "../planer/CreateRoute"
+import RoutingInstr from "../planer/RoutingInstr"
+import Notifications from "../planer/Notifications"
+import Contact from "../planer/Contact"
+
 
 const NavItems = () => {
     const {state} = useContext(AuthContext);
@@ -26,6 +31,10 @@ const NavItems = () => {
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                 <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
+                <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
+                <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
+                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
             </Nav>
         );
     } else if (state.user.role === "Planer") {
@@ -33,12 +42,20 @@ const NavItems = () => {
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
+                <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
+                <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
+                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
             </Nav>
         );
     } else {
         return (
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
+                <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
+                <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
+                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
             </Nav>
         );
     }
@@ -102,6 +119,10 @@ const Routes = () => {
                     <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                     <Route path="/emailNoAccess" component={EmailNoAccess}/>
                     <Route exact path="/login" component={LoginContainer}/>
+                    <PrivateRoute path="/createRoute" component={CreateRoute}/>
+                    <PrivateRoute path="/routing" component={RoutingInstr}/>
+                    <PrivateRoute path="/notifications" component={Notifications}/>
+                    <PrivateRoute path="/contact" component={Contact}/>
                 </Switch>
             </div>
         </BrowserRouter>)
