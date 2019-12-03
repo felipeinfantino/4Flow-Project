@@ -13,6 +13,7 @@ import SupplierContact from "../planer/SupplierContact";
 import StartPage from "./startpage";
 import EmailResp from "../email/emailResponse";
 import EmailNoAccess from "../email/emailNOAccess";
+import TaskProvider from '../taskManagment/TaskProvider';
 
 
 const NavItems = () => {
@@ -82,6 +83,7 @@ const UserOptions = () => {
 
 const Routes = () => {
     return (
+        <TaskProvider>
         <BrowserRouter>
             <Navbar bg="light" expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -104,7 +106,9 @@ const Routes = () => {
                     <Route exact path="/login" component={LoginContainer}/>
                 </Switch>
             </div>
-        </BrowserRouter>)
+        </BrowserRouter>
+        </TaskProvider>
+        )
 };
 
 export default Routes;
