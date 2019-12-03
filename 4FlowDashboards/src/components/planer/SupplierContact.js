@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import firebase from "../firebase/Firebase";
+import axios from "axios";
 // const cryptoRandomString = require('crypto-random-string');
 var db =  firebase.firestore();
 
@@ -43,7 +44,8 @@ export class SupplierContact extends Component {
                         subject: subject,
                         body: body
                     }
-                };
+            };
+
             //Aufträge=>TaskID=>CustomerID=>Data
             db.collection("Aufträge").doc(tid).set(data).then(function (response) {
                 console.log(response);
@@ -51,7 +53,22 @@ export class SupplierContact extends Component {
                 console.log(error);
             });
 
-
+            axios.post('/email', 
+            {
+                destinations: suppliers,
+                date: date,
+                type: type,
+                subject: subject,
+                text: body
+            },
+            {
+                headers: 
+                {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function (response) {
+                console.log(response)
+            });
         });
       }
     
