@@ -6,7 +6,6 @@ import firebase from "../firebase/Firebase";
 var db =  firebase.firestore();
 
 export class SupplierContact extends Component {
-
     state = {
         startDate: new Date()
       };
@@ -16,7 +15,6 @@ export class SupplierContact extends Component {
           startDate: date
         });
       };
-
       handleSubmit = (event) => {
         event.preventDefault();
         let suppliersCheckBox = document.getElementsByName('suppliers[]');
@@ -24,6 +22,7 @@ export class SupplierContact extends Component {
         let type = document.getElementsByName('contract_type')[0].value;
         let subject = document.getElementsByName('subject')[0].value;
         let body = document.getElementsByName('mailBody')[0].value;
+        let tid = 'taskID';
 
         let suppliers = [];
         suppliersCheckBox.forEach((element) => {
@@ -36,14 +35,17 @@ export class SupplierContact extends Component {
             // var newKey = cryptoRandomString({length: 20});
 
             var data = {
-                mail: supplier,
-                date: date,
-                type: type,
-                subject: subject,
-                body: body
-            }
-
-            db.collection("Aufträge").add(data).then(function (response) {
+                customerID:
+                    {
+                        mail: supplier,
+                        date: date,
+                        type: type,
+                        subject: subject,
+                        body: body
+                    }
+                };
+            //Aufträge=>TaskID=>CustomerID=>Data
+            db.collection("Aufträge").doc(tid).set(data).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
