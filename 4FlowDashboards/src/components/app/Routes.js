@@ -37,7 +37,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
-                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
             </Nav>
         );
@@ -50,7 +50,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
-                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
             </Nav>
         );
@@ -62,7 +62,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
-                <Nav.Link><Link to="/masterdata">Chnage Master Data</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
             </Nav>
         );
