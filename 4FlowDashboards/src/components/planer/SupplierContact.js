@@ -53,19 +53,17 @@ export class SupplierContact extends Component {
                 console.log(error);
             });
 
-            axios.post('/email', 
-            {
-                destinations: suppliers,
-                date: date,
-                type: type,
-                subject: subject,
-                text: body
-            },
-            {
-                headers: 
-                {
+            fetch('http://localhost:3001/email', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify({
+                    destinations: ["test@gmail.com"],
+                    subject: subject,
+                    text: body
+                })
             }).then(function (response) {
                 console.log(response)
             });
@@ -99,7 +97,7 @@ export class SupplierContact extends Component {
                                                             Mircosoft 
                                                         </td>
                                                         <td>
-                                                            <input type="checkbox" name="suppliers[]" value="microsoft@mail.com"></input> 
+                                                            <input type="checkbox" name="suppliers[]" value="nanhduc75@gmail.com"></input> 
                                                         </td>
                                                     </tr>
                                                     <tr>
