@@ -77,66 +77,7 @@ export class SupplierContact extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="row">
                             <div className="col-md-3">
-                                <div className="form-group" style={{ marginTop: '40px', marginLeft: '100px', textAlign: 'left' }}>
-                                    <label className="control-label"><strong>Choose all suppliers:</strong></label>
-                                    <div className="row">
-                                        <div className="col-md-4">
-                                            <div className="table-responsive"></div>
-                                            <table className="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            Supplier
-                                                        </th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Mircosoft 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="nanhduc75@gmail.com"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Google 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="google@mail.com"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Amazon 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="amazon@mail.com"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Apple 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="apple@mail.com"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Netflix 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="netflix@mail.com"></input> 
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div> 
                             <div className="col-md-3">
                                 <div className="form-group" style={{ textAlign: 'left', marginTop: '40px' }}>
