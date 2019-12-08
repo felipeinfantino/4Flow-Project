@@ -33,6 +33,7 @@ class Planer extends React.Component {
                                 {(context) => (
                                     <Todos todos={context.state.planer.todos.filter((todo) => todo.status === planerColumnNames[state])}
                                            toggleSubTask={context.togglePlanerSubtask}
+                                           history={this.props.history}
                                     />
                                 )}
                                 </TaskContext.Consumer>

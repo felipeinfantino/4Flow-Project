@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 export class SupplierContact extends Component {
     state = {
-        startDate: new Date()
+        startDate: new Date(),
       };
      
       handleChange = date => {
@@ -12,74 +13,72 @@ export class SupplierContact extends Component {
           startDate: date
         });
       };
+
+      componentDidMount(){
+          const passedState = this.props.location.state;
+          console.log(passedState)
+          if(!passedState){
+              alert("Pass the companies you want to contact, subtaskId and todoId");
+              this.props.history.push("/planer");
+          }
+          if(!this.props.location.state.companiesToContact){
+            alert("Pass the companies you want to contact");
+              this.props.history.push("/planer");
+          }
+          if(!this.props.location.state.subTaskId){
+            alert("Pass the subtaskId");
+            this.props.history.push("/planer");
+          }
+          if(!this.props.location.state.todoId){
+            alert("Pass the todoId");
+            this.props.history.push("/planer");
+          }
+
+        this.setState({companiesToContact: this.props.location.state.companiesToContact, subTaskId: this.props.location.state.subTaskId, todoId: this.props.location.state.todoId });
+          
+      }
+
+    broadcastEmail = async () => {
+        return this.state.companiesToContact.map((company) => company.companyName);
+    }
+
+    goBack = async () => {
+        try{
+            const contactedCompanies = await this.broadcastEmail();
+            console.log(contactedCompanies);
+            alert("Email successfully sent");
+            console.log("here i",this.state.subTaskId);
+            console.log("here a",this.state.todoId);
+            this.props.history.push("/collectdata", {contactedCompanies : contactedCompanies, subTaskId: this.state.subTaskId, todoId: this.state.todoId });
+        }catch(e){
+            console.log(e);
+            alert("Somenthing went wrong try again please");
+            this.props.history.push("/collectdata");
+        }   
+      }
+    
     
     render() {
         return (
             <div id="contact-template">
                 <div className="template-body">
-                    <form action="/contacts/sendMails" method="POST">
                         <div className="row">
                             <div className="col-md-3">
-                                <div className="form-group" style={{ marginTop: '40px', marginLeft: '100px', textAlign: 'left' }}>
-                                    <label className="control-label"><strong>Choose all suppliers:</strong></label>
-                                    <div className="row">
-                                        <div className="col-md-4">
-                                            <div className="table-responsive"></div>
-                                            <table className="table table-striped table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            Supplier
-                                                        </th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            Mircosoft 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Microsoft"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Google 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Google"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Amazon 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Amazon"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Apple 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Apple"></input> 
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Netflix 
-                                                        </td>
-                                                        <td>
-                                                            <input type="checkbox" name="suppliers[]" value="Netflix"></input> 
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                            <div >
+                            <label className="control-label"><strong>Companies to contact</strong></label>
+                            <div >
+                                {this.state.companiesToContact ? this.state.companiesToContact.map(company => {
+                                    return (
+                                        <div style={{ border: "1px solid grey", margin: "10px", backgroundColor: "lightGrey" }}>
+                                            <p>{company.companyName}</p>
+                                            <p>{company.email}</p>
                                         </div>
-                                    </div>
-                                </div>
+                                    )
+                                }) : '' }
+
+                            </div>
+
+                            </div>
                             </div> 
                             <div className="col-md-3">
                                 <div className="form-group" style={{ textAlign: 'left', marginTop: '40px' }}>
@@ -127,13 +126,12 @@ export class SupplierContact extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12" style={{ textAlign: 'center', marginTop: '20px' }}>
-                                            <button type="submit" className="btn btn-primary btm-sm">Send</button>
+                                            <button type="btn" className="btn btn-primary btm-sm" onClick={this.goBack}>Send</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         );

@@ -33,26 +33,26 @@ const NavItems = () => {
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
-                <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
+                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
-                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
-                <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
+                <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link> */}
             </Nav>
         );
     } else if (state.user.role === "Planer") {
         return (
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
+                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                {/* <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
-                <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
-                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
-                <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
-                <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
+                <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link> */}
             </Nav>
         );
     } else {

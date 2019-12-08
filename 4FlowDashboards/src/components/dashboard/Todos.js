@@ -10,7 +10,10 @@ class Todos extends React.Component {
             <Accordion>
                 {this.props.todos.map((todo) => <TodoItem key={todo.id} todo={todo} deleteItem={this.props.deleteItem}
                                                           shiftItem={this.props.shiftItem}
-                                                          toggleSubTask={this.props.toggleSubTask}/>)}
+                                                          toggleSubTask={this.props.toggleSubTask}
+                                                          history={this.props.history}
+                                                          />
+                                                          )}
             </Accordion>
         )
     }
