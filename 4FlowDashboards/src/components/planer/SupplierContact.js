@@ -10,7 +10,8 @@ export class SupplierContact extends Component {
     state = {
         startDate: new Date()
       };
-     
+    
+    
       handleChange = date => {
         this.setState({
           startDate: date
@@ -18,19 +19,20 @@ export class SupplierContact extends Component {
       };
       handleSubmit = (event) => {
         event.preventDefault();
-        let suppliersCheckBox = document.getElementsByName('suppliers[]');
+        //let suppliersCheckBox = document.getElementsByName('suppliers[]');
         let date = document.getElementsByName('datepicker')[0].value;
         let type = document.getElementsByName('contract_type')[0].value;
         let subject = document.getElementsByName('subject')[0].value;
         let body = document.getElementsByName('mailBody')[0].value;
         let tid = 'taskID';
 
-        let suppliers = [];
-        suppliersCheckBox.forEach((element) => {
+        let suppliers = ['google', 'amazon']
+        //console.log(suppliers)
+        /*suppliersCheckBox.forEach((element) => {
             if (element.checked) {
                 suppliers.push(element.value);
             }
-        });
+        });*/
         
         suppliers.forEach(supplier => {
             // var newKey = cryptoRandomString({length: 20});
@@ -45,6 +47,8 @@ export class SupplierContact extends Component {
                         body: body
                     }
             };
+
+            console.log(data)
 
             //Aufträge=>TaskID=>CustomerID=>Data
             db.collection("Aufträge").doc(tid).set(data).then(function (response) {
