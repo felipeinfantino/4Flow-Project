@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import firebase from "../firebase/Firebase";
+
+var db = firebase.firestore();
 
 
 export class SupplierContact extends Component {
@@ -39,7 +42,31 @@ export class SupplierContact extends Component {
       }
 
     broadcastEmail = async () => {
-        return this.state.companiesToContact.map((company) => company.companyName);
+        console.log("in broadcast")
+        let companies =  this.state.companiesToContact.map((company) => company.companyName);
+        let date = document.getElementsByName('datepicker')[0].value;
+        let type = document.getElementsByName('contract_type')[0].value;
+        let subject = document.getElementsByName('subject')[0].value;
+        let mailBody = document.getElementsByName('mailBody')[0].value;
+
+        companies.forEach(company => {
+
+            var data = {
+                customerID:
+                {
+                    mail: supplier,
+                    date: date,
+                    type: type,
+                    subject: subject,
+                    body: mailBody
+                }
+            };
+
+            
+            
+        });
+
+        return companies
     }
 
     goBack = async () => {
@@ -95,6 +122,7 @@ export class SupplierContact extends Component {
                                             timeCaption="time"
                                             dateFormat="d.M.Y h:mm aa"
                                             className="form-control"
+                                            name = "datepicker"
                                         />
                                     </div>
                                     <div className="row" style={{ marginTop: '20px' }}>
