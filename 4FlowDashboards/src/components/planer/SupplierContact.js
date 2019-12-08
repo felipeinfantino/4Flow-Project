@@ -54,7 +54,7 @@ export class SupplierContact extends Component {
             var data = {
                 customerID:
                 {
-                    mail: supplier,
+                    mail: company,
                     date: date,
                     type: type,
                     subject: subject,
@@ -62,7 +62,27 @@ export class SupplierContact extends Component {
                 }
             };
 
-            
+            db.collection("Aufträge").doc().set(data).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+            fetch('http://localhost:3001/email', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    destinations: ["test@gmail.com"],
+                    subject: subject,
+                    text: mailBody
+                })
+            }).then(function (response) {
+                console.log(response)
+            });
+
             
         });
 
