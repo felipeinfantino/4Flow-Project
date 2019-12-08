@@ -42,6 +42,7 @@ export class SupplierContact extends Component {
       }
 
     broadcastEmail = async () => {
+        let taskID = 1;
         console.log("in broadcast")
         let companies =  this.state.companiesToContact.map((company) => company.companyName);
         let date = document.getElementsByName('datepicker')[0].value;
@@ -50,7 +51,10 @@ export class SupplierContact extends Component {
         let mailBody = document.getElementsByName('mailBody')[0].value;
 
         companies.forEach(company => {
-
+            /*console.log("***********")
+            console.log(mailBody)
+            console.log(subject)
+            console.log("***********")*/
             var data = {
                 customerID:
                 {
@@ -62,7 +66,7 @@ export class SupplierContact extends Component {
                 }
             };
 
-            db.collection("Aufträge").doc().set(data).then(function (response) {
+            db.collection("Aufträge").doc(taskID.toString()).set(data).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
@@ -82,7 +86,8 @@ export class SupplierContact extends Component {
             }).then(function (response) {
                 console.log(response)
             });
-
+            
+            taskID = taskID +1
             
         });
 
