@@ -27,6 +27,7 @@ export class SupplierContact extends Component {
         let tid = 'taskID';
 
         let suppliers = ['google', 'amazon']
+        
         //console.log(suppliers)
         /*suppliersCheckBox.forEach((element) => {
             if (element.checked) {
