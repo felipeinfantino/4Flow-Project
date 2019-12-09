@@ -51,14 +51,11 @@ class UserCreate extends Component{
         .then(data=>{
             console.log('Signup successful.');
             writeUserData(myForm.email, myForm.userpassword,myForm.role,myForm.company,data.user.uid)
-            //firebase.auth().signOut();
-
            })
         .catch((error)=> {
             alert(error.message)
           });
 
-        //writeUserData(myForm.email, myForm.userpassword,myForm.role,myForm.username);
         if(dir === true){
             dir = false;
         }else{
