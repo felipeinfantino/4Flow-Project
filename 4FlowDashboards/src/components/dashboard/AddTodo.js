@@ -35,9 +35,9 @@ export class AddTodo extends Component {
     };
 
     canSaveTodo = () => {
-        const hasEverySubtaskATitle = this.state.subTasks.every((subtask) => subtask.title !== '');
+        //const hasEverySubtaskATitle = this.state.subTasks.every((subtask) => subtask.title !== '');
         const hasTodoTitle = this.state.title !== '';
-        return !(hasEverySubtaskATitle && hasTodoTitle);
+        return !(hasTodoTitle);
     };
 
     handleChange = (subTaskId, event) => {
@@ -62,6 +62,28 @@ export class AddTodo extends Component {
         const stateCopy = {...this.state};
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
+        stateCopy['subTasks'] = [
+            {
+                id: uuidv4(),
+                title: 'Collect Data & Communication',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Change Master Data',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Create Route',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Create and send routing instructions',
+                completed: false,
+            },
+        ]
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };
@@ -86,7 +108,7 @@ export class AddTodo extends Component {
                                 <Form.Control type="email" placeholder="Enter todo title"
                                               onChange={this.handleTodoTitleChange.bind(this)}/>
                             </Form.Group>
-                            <p>Subtasks</p>
+                            {/* <p>Subtasks</p>
                             {this.state.subTasks.map((subTask) => {
                                 return (
                                     <div key={subTask.id}>
@@ -97,18 +119,19 @@ export class AddTodo extends Component {
                                         </Form.Group>
                                     </div>
                                 )
-                            })}
-                            <Button className="btn btn-sm btn-dark" onClick={this.addSubtask}>
+                            })} */}
+                           {/* Maybe for the future for now hardcoded subtasks */}
+                            {/* <Button className="btn btn-sm btn-dark" onClick={this.addSubtask}>
                                 Add subtask
                             </Button>
                             <div style={{display: 'block', marginTop: '20px'}}>
                                 <Button style={{ marginRight: '3px' }} className="btn btn-sm btn-danger" onClick={this.toggleButton}>
                                     Cancel
                                 </Button>
-                                <Button style={{ marginLeft: '3px' }} className="btn btn-sm btn-success" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
-                                    Add
-                                </Button>
-                            </div>
+                            </div> */}
+                            <Button style={{ marginLeft: '3px' }} className="btn btn-sm btn-success" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
+                                Add
+                            </Button>
                         </Form>
                     </div>
                     : ''}

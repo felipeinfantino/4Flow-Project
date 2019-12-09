@@ -13,7 +13,9 @@ export class TodoItem extends Component {
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={id}>
                     <SubTaskList subTasks={this.props.todo.subTasks} key={id} todoId={id}
-                                 toggleSubTask={this.props.toggleSubTask}/>
+                                 toggleSubTask={this.props.toggleSubTask}
+                                 history={this.props.history}
+                                 />
                 </Accordion.Collapse>
             </Card>
         )
