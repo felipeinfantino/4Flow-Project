@@ -83,39 +83,39 @@ class DataCollection extends React.Component {
                                         <ul>
                                             <li>
                                                 <div class="company-details">
-                                                    <div className="row" style={{marginLeft: "15px"}}>
-                                                    <div className="form-check">
+                                                    <div className="row company1" > 
+                                                    <div className="form-check" style={{marginLeft: "-15px",position: "relative",display: "block",paddingLeft: "1.25rem"}}>
                                                         <label className="form-check-label" style={{float: "left", margin:"5px"}}>
                                                                 <input type="checkbox" class="form-check-input" value=""/><span>Company 1</span><br></br>
                                                         </label>
                                                         </div>
                                                     </div>
-                                                    <div className="row" style={{marginLeft: "15px"}}>
+                                                    <div className="row company1-contact">
                                                     <div>
-                                                    {this.state.contactedCompanies.includes("Company 1") ? <p>Contacted</p> : <p>Not contacted</p>}
+                                                    {this.state.contactedCompanies.includes("Company 1") ? <p className="contact-status green-st">Contacted</p> : <p className="contact-status red-st">Not contacted</p>}
                                                     </div>  
                                                     </div>
                                                 </div>
                                             </li>
                                             <li>
                                             <div class="company-details">
-                                                    <div className="row" style={{marginLeft: "15px"}}>
+                                                    <div className="row company2">
                                                     <div className="form-check">
                                                         <label className="form-check-label" style={{float: "left", margin:"5px"}}>
                                                                 <input type="checkbox" class="form-check-input" value=""/><span>Company 2</span><br></br>
                                                         </label>
                                                         </div>
                                                     </div>
-                                                    <div className="row" style={{marginLeft: "15px"}}>
+                                                    <div className="row company2-contact" >
                                                     <div>
-                                                    {this.state.contactedCompanies.includes("Company 2") ? <p>Contacted</p> : <p>Not contacted</p>}
+                                                    {this.state.contactedCompanies.includes("Company 2") ? <p className="contact-status green-st">Contacted</p> : <p className="contact-status red-st">Not contacted</p>}
                                                     </div>  
                                                     </div>
                                                 </div> 
                                             </li>
         
                                         </ul>
-                                        <button class="btn btn-sm btn-success" type="btn" onClick={this.contactCompanies} >Contact</button>
+                                        <button class="btn btn-sm btn-success btn-contact" type="btn" onClick={this.contactCompanies} >Contact</button>
                                     </div>   
                                 </div>
                             </div>
