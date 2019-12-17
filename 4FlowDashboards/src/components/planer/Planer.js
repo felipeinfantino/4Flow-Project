@@ -4,10 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from '../dashboard/AddTodo';
 import { TaskContext, planerColumnNames } from '../taskManagment/TaskProvider';
 import { uploadTask } from '../taskManagment/TaskUploader';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import AddToDoPersonal from '../dashboard/AddToDoPersonal';
 
-
-class Planer extends React.Component {
-
+const defaultState = {
+    isPrivate: true,
+};
+export class Planer extends React.Component {
+    state = {...defaultState};
 
     addTodo = (todo) => {
         uploadTask(todo, "PlanerTasks");
@@ -16,7 +20,21 @@ class Planer extends React.Component {
     render() {
         return (
             <div>
-                <AddTodo addTodo={this.addTodo}/>
+                <BootstrapSwitchButton
+                    checked={false}
+                    onlabel='Pipeline'
+                    onstyle='danger'
+                    offlabel='Personal'
+                    offstyle='success'
+                    style='w-25 mt-5'
+                    onChange={() => {
+                        this.setState({ isPrivate: !this.state.isPrivate })
+                    }}
+                />
+                {this.state.isPrivate ? 
+                    <AddToDoPersonal addTodo={this.addTodo}/> : 
+                    <AddTodo addTodo={this.addTodo}/>
+                }
                 <div style={{display: 'flex'}}>
                     {Object.keys(planerColumnNames).map((state) => {
                         return (
@@ -41,7 +59,6 @@ class Planer extends React.Component {
                         )
                     })}
                 </div>
-
             </div>
         );
     }
