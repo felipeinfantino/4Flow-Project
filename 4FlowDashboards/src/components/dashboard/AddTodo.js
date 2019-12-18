@@ -37,8 +37,9 @@ export class AddTodo extends Component {
 
     canSaveTodo = () => {
         //const hasEverySubtaskATitle = this.state.subTasks.every((subtask) => subtask.title !== '');
+        const setSelected = this.state.buttonTitle !== 'Select Set'
         const hasTodoTitle = this.state.title !== '';
-        return !(hasTodoTitle);
+        return !(hasTodoTitle) || !(setSelected);
     };
 
     handleChange = (subTaskId, event) => {
@@ -59,32 +60,74 @@ export class AddTodo extends Component {
         this.setState({title: newTitle});
     };
 
+    setFactory = (setType) => {
+        if(setType == "Set1"){
+            return( [          {
+                id: uuidv4(),
+                title: 'Subtask A',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Subtask B',
+                completed: false,
+            } ])
+        }
+        if(setType == "Set2"){
+            return(          [ {
+                id: uuidv4(),
+                title: 'Subtask C',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Subtask D',
+                completed: false,
+            }])
+
+        }
+        if(setType == "Set3"){
+            return( [          {
+                id: uuidv4(),
+                title: 'Subtask E',
+                completed: false,
+            },
+            {
+                id: uuidv4(),
+                title: 'Subtask F',
+                completed: false,
+            }])
+
+        }
+    }
+
     prepareAndSubmit = () => {
         const stateCopy = {...this.state};
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
-        stateCopy['subTasks'] = [
-            {
-                id: uuidv4(),
-                title: 'Collect Data & Communication',
-                completed: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Change Master Data',
-                completed: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Create Route',
-                completed: false,
-            },
-            {
-                id: uuidv4(),
-                title: 'Create and send routing instructions',
-                completed: false,
-            },
-        ]
+        // stateCopy['subTasks'] = [
+        //     {
+        //         id: uuidv4(),
+        //         title: 'Collect Data & Communication',
+        //         completed: false,
+        //     },
+        //     {
+        //         id: uuidv4(),
+        //         title: 'Change Master Data',
+        //         completed: false,
+        //     },
+        //     {
+        //         id: uuidv4(),
+        //         title: 'Create Route',
+        //         completed: false,
+        //     },
+        //     {
+        //         id: uuidv4(),
+        //         title: 'Create and send routing instructions',
+        //         completed: false,
+        //     },
+        // ]
+        stateCopy['subTasks'] = this.setFactory(this.state.buttonTitle)
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };
