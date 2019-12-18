@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Form} from 'react-bootstrap';
+import {Button, Form, DropdownButton, Dropdown} from 'react-bootstrap';
 import {columnNames} from '../app/App';
 
 const uuidv4 = require('uuid/v4');
@@ -8,6 +8,7 @@ const defaultState = {
     id: uuidv4(),
     title: '',
     buttonToggled: false,
+    buttonTitle: 'Select Set',
     subTasks: [
         {
             id: uuidv4(),
@@ -88,6 +89,13 @@ export class AddTodo extends Component {
         this.setState({...defaultState});
     };
 
+    selectSet = (e, object) => {
+        console.log(e)
+        console.log(object)
+        this.setState({buttonTitle: e})
+
+    }
+
     render() {
         return (
             <div style={this.getStyle()}>
@@ -108,6 +116,11 @@ export class AddTodo extends Component {
                                 <Form.Control type="email" placeholder="Enter todo title"
                                               onChange={this.handleTodoTitleChange.bind(this)}/>
                             </Form.Group>
+                            <DropdownButton id="dropdown-basic-button" title={this.state.buttonTitle} className="dropdown-sets" style={{marginBottom: '10px'}} onSelect={this.selectSet} >
+                                <Dropdown.Item eventKey="Set1">Set 1</Dropdown.Item>
+                                <Dropdown.Item eventKey="Set2">Set 2</Dropdown.Item>
+                                <Dropdown.Item eventKey="Set3">Set 3</Dropdown.Item>
+                            </DropdownButton>
                             {/* <p>Subtasks</p>
                             {this.state.subTasks.map((subTask) => {
                                 return (
