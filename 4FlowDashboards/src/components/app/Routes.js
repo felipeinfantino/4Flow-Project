@@ -18,7 +18,7 @@ import TaskProvider from '../taskManagment/TaskProvider';
 import CreateRoute from "../planer/CreateRoute"
 import RoutingInstr from "../planer/RoutingInstr"
 import Notifications from "../planer/Notifications"
-import Contact from "../planer/Contact"
+// import Companies from "../planer/Companies"
 import ChangeMasterData from "../planer/ChangeMasterData"
 import DataCollection from "../planer/DataCollection"
 
@@ -34,10 +34,10 @@ const NavItems = () => {
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
                 {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
-                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link> */}
             </Nav>
@@ -47,7 +47,8 @@ const NavItems = () => {
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
-                {/* <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
+                {/* 
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
@@ -62,7 +63,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
-                <Nav.Link><Link to="/contact">Contact</Link></Nav.Link>
+                {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
             </Nav>
@@ -132,7 +133,7 @@ const Routes = () => {
                     <PrivateRoute path="/createRoute" component={CreateRoute}/>
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
-                    <PrivateRoute path="/contact" component={Contact}/>
+                    {/* <PrivateRoute path="/companies" component={Companies}/> */}
                     <PrivateRoute path="/masterdata" component={ChangeMasterData}/>
                     <PrivateRoute path="/collectdata" component={DataCollection}/>
                 </Switch>
