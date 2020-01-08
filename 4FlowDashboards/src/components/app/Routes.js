@@ -133,7 +133,7 @@ const Routes = () => {
                     <PrivateRoute path="/createRoute" component={CreateRoute}/>
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
-                    {/* <PrivateRoute path="/companies" component={Companies}/> */}
+                    <PrivateRoute path="/companies" component={Companies}/>
                     <PrivateRoute path="/masterdata" component={ChangeMasterData}/>
                     <PrivateRoute path="/collectdata" component={DataCollection}/>
                 </Switch>
