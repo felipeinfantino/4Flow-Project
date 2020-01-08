@@ -18,7 +18,7 @@ import TaskProvider from '../taskManagment/TaskProvider';
 import CreateRoute from "../planer/CreateRoute"
 import RoutingInstr from "../planer/RoutingInstr"
 import Notifications from "../planer/Notifications"
-// import Companies from "../planer/Companies"
+import Companies from "../planer/Companies"
 import ChangeMasterData from "../planer/ChangeMasterData"
 import DataCollection from "../planer/DataCollection"
 
@@ -34,7 +34,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
-                {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
+                <Nav.Link><Link to="/companies">Companies</Link></Nav.Link>
                 {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
@@ -63,7 +63,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
-                {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
+                <Nav.Link><Link to="/companies">Companies</Link></Nav.Link>
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
                 <Nav.Link><Link to="/collectdata">Collect Data and Communicate</Link></Nav.Link>
             </Nav>
