@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {Button, Form, DropdownButton, Dropdown} from 'react-bootstrap';
 import {columnNames} from '../app/App';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const uuidv4 = require('uuid/v4');
 
@@ -9,6 +12,7 @@ const defaultState = {
     title: '',
     buttonToggled: false,
     buttonTitle: 'Select Set',
+    deadline: new Date(),
     subTasks: [
         {
             id: uuidv4(),
@@ -53,6 +57,13 @@ export class AddTodo extends Component {
                 return subTask;
             })
         })
+    };
+
+    handleDeadlineChange = date => {
+        this.setState({
+            ...this.state,
+            deadline: date
+        });
     };
 
     handleTodoTitleChange = (event) => {
@@ -164,28 +175,13 @@ export class AddTodo extends Component {
                                 <Dropdown.Item eventKey="Set2">Set 2</Dropdown.Item>
                                 <Dropdown.Item eventKey="Set3">Set 3</Dropdown.Item>
                             </DropdownButton>
-                            {/* <p>Subtasks</p>
-                            {this.state.subTasks.map((subTask) => {
-                                return (
-                                    <div key={subTask.id}>
-                                        <Form.Group controlId="formBasicEmail">
-                                            <Form.Control type="email" placeholder="Enter subtask"
-                                                          defaultValue={subTask.title}
-                                                          onChange={this.handleChange.bind(this, subTask.id)}/>
-                                        </Form.Group>
-                                    </div>
-                                )
-                            })} */}
-                           {/* Maybe for the future for now hardcoded subtasks */}
-                            {/* <Button className="btn btn-sm btn-dark" onClick={this.addSubtask}>
-                                Add subtask
-                            </Button>
-                            <div style={{display: 'block', marginTop: '20px'}}>
-                                <Button style={{ marginRight: '3px' }} className="btn btn-sm btn-danger" onClick={this.toggleButton}>
-                                    Cancel
-                                </Button>
-                            </div> */}
-                            <Button style={{ marginLeft: '3px' }} className="btn btn-sm btn-success" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
+
+                            <DatePicker
+                                selected={this.state.deadline}
+                                onChange={this.handleDeadlineChange}
+                            />
+
+                            <Button style={{ marginLeft: '10px' }} className="btn btn-sm btn-success" disabled={this.canSaveTodo()} onClick={this.prepareAndSubmit}>
                                 Add
                             </Button>
                         </Form>
