@@ -12,7 +12,7 @@ export const columnNames = {
     DONE: 'Done',
 };
 
-class App extends React.Component {
+class App extends React.Component { 
     render() {
         return (
             <div className="App">

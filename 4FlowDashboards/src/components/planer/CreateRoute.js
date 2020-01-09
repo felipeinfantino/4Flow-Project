@@ -19,7 +19,7 @@ class CreateRoute extends React.Component {
                     <button>Wait/Contact Balancer</button><br></br>
                 </div>
                 <div class="buttons-container">
-                    <button class="btn btn-success btn-sm route-success"><Link to={"/contact"} activeStyle={{color:"red"}}>Done</Link></button>
+                    <button class="btn btn-success btn-sm route-success">Done</button>
                     <button class="btn btn-danger btn-sm route-danger">Cancel</button>
                 </div>
 

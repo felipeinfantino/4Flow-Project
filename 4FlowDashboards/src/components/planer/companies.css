@@ -1,0 +1,149 @@
+fieldset.contact {
+  font-family: monospace;
+  width: 1167px;
+  height: 490px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 95px;
+  margin-right: 80px;
+  background-color: white;
+}
+legend.contact-legend {
+  font-size: smaller !important;
+  font-weight: 300 !important;
+  text-align: left !important;
+  width: auto;
+  padding: 0 10px;
+  border-bottom: none !important;
+}
+/* Form */
+.addingCompany {
+  height: 63px;
+  padding-top: 20px;
+  background-color: #c5ccd6;
+}
+.add-comapny-form input, select {
+  width: 200px;
+  height: 28px;
+  float: left;
+  margin-left: 10px;
+}
+
+.add-comapny-form button {
+  width: 60px;
+}
+
+/* Grid */
+
+.grid-view {
+  width: 1156px;
+  height: 412px;
+  margin-top: 5px;
+  padding: 0;
+  background-color: #dde3e8;
+}
+
+.grid-container {
+  width: 1156px;
+  height: 384px;
+  overflow-y: scroll;
+}
+
+.company-grid-header {
+    width: 1139px;
+    height: 30px;
+    position: fixed;
+  }
+
+  .grid-header {
+    width: 20%;
+    height: 30px;
+    border: 1px solid #757575;
+    float: left;
+    background-color: #888992;
+  }
+  
+  .grid-header span {
+    text-align: left;
+    font-style: bold;
+    font-weight: 500;
+  }
+  .grid-filters select {
+    float: left;
+    margin: 14px;
+    width: 150px;
+}
+  .grid-body {
+    width: inherit;
+    height: 30px;
+  }
+  
+  .grid-header-line {
+    width: 20%;
+    height: 30px;
+    float: left;
+    background-color: #c5ccd6;
+    border: 1px solid grey;
+  }
+  .grid-header-line input {
+    background-color: #c5ccd6;
+    border: 0;
+    width: 230px;
+    height: 28px;
+    text-align: center;
+  }
+
+  .grid-header-line select {
+    height: 28px;
+    border: none;
+  }
+  .del {
+    background: #dde1e5;
+    width: 15px;
+    text-align: center;
+    cursor:  pointer;
+    margin-top: 2px;
+    color: #010d1b;
+    float: right;
+  }
+
+
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 2px;
+    font-size: 15px;
+    text-align: left;
+    height: 45px;
+    margin-left: 1px;
+    margin-right: 1px;
+    
+  }
+
+  .grid-filters {
+    border: 1px solid black;
+    width: 1160px;
+    height: 55px;
+    margin-left: 2px;
+    margin-top: 7px;
+}
+.grid-filters input {
+    margin: 11px;
+    float: left;
+    width: 150px;
+}
+
+.company-grid-bottom {
+  height: 25px;
+  width: 1140px;
+  border: 1px solid #757575;
+  background-color: #888992;
+}
+
+.grid-search {
+  width: 221px;
+  float: left;
+  margin-top: 2px;
+  margin-left: 3px;
+  height: 20px;
+}
