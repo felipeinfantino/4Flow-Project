@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Button, Form} from 'react-bootstrap';
 import {columnNames} from '../app/App';
+import DatePicker from "react-datepicker";
 
 const uuidv4 = require('uuid/v4');
 
@@ -8,6 +9,8 @@ const defaultState = {
     id: uuidv4(),
     title: '',
     buttonToggled: false,
+    type: 'personal',
+    deadline: new Date(),
     subTasks: [
         {
             id: uuidv4(),
@@ -58,10 +61,18 @@ export class AddToDoPersonal extends Component {
         this.setState({title: newTitle});
     };
 
+    handleDeadlineChange = date => {
+        this.setState({
+            ...this.state,
+            deadline: date
+        });
+    };
+
     prepareAndSubmit = () => {
         const stateCopy = {...this.state};
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
+        stateCopy['subTasks'] = this.state.subTasks;
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };
@@ -101,6 +112,14 @@ export class AddToDoPersonal extends Component {
                             <Button className="btn btn-sm btn-dark" onClick={this.addSubtask}>
                                 Add subtask
                             </Button>
+
+                            <div style={{ margin: '20px' }}>
+                                <DatePicker
+                                    selected={this.state.deadline}
+                                    onChange={this.handleDeadlineChange}
+                                />
+                            </div>
+
                             <div style={{display: 'block', marginTop: '20px'}}>
                                 <Button style={{ marginRight: '3px' }} className="btn btn-sm btn-danger" onClick={this.toggleButton}>
                                     Cancel

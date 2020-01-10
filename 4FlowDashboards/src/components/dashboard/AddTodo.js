@@ -12,6 +12,7 @@ const defaultState = {
     title: '',
     buttonToggled: false,
     buttonTitle: 'Select Set',
+    type: 'pipeline',
     deadline: new Date(),
     subTasks: [
         {

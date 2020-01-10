@@ -47,14 +47,24 @@ export class Planer extends React.Component {
                                     padding: '10px',
                                     fontStyle: 'bold'
                                 }}>{planerColumnNames[state]}</h5>
-                                <TaskContext.Consumer>
-                                {(context) => (
-                                    <Todos todos={context.state.planer.todos.filter((todo) => todo.status === planerColumnNames[state])}
-                                           toggleSubTask={context.togglePlanerSubtask}
-                                           history={this.props.history}
-                                    />
-                                )}
-                                </TaskContext.Consumer>
+                                {this.state.isPrivate ?
+                                    <TaskContext.Consumer>
+                                    {(context) => (
+                                        <Todos todos={context.state.planer.todos.filter((todo) => todo.status === planerColumnNames[state] && todo.type == 'personal')}
+                                            toggleSubTask={context.togglePlanerSubtask}
+                                            history={this.props.history}
+                                        />
+                                    )}
+                                    </TaskContext.Consumer> :
+                                    <TaskContext.Consumer>
+                                    {(context) => (
+                                        <Todos todos={context.state.planer.todos.filter((todo) => todo.status === planerColumnNames[state] && todo.type == 'pipeline')}
+                                            toggleSubTask={context.togglePlanerSubtask}
+                                            history={this.props.history}
+                                        />
+                                    )}
+                                    </TaskContext.Consumer>
+                                }
                             </div>
                         )
                     })}
