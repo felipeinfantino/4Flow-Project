@@ -13,6 +13,14 @@ export class ExternalReminder extends Component {
                 <div className="template-body">
                         <div className="row">
                           <h3>People Involved</h3>
+                          <div className="col-md-6">
+                            <h5>List of people involved in the task</h5>
+                            <ul>
+                              <li>Person 1</li>
+                              <li>Person 2</li>
+                              <li>Person 3</li>
+                            </ul>
+                          </div>
                             <div className="col-md-6">
                                 <div className="form-group" style={{ marginTop: '40px', marginLeft: '100px', width: '70%'}}>
                                     <div className="row">
