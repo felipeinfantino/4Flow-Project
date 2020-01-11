@@ -14,6 +14,7 @@ import StartPage from "./startpage";
 import EmailResp from "../email/emailResponse";
 import EmailNoAccess from "../email/emailNOAccess";
 import TaskProvider from '../taskManagment/TaskProvider';
+import ExternalReminder from "../planer/ExternalReminder";
 
 import CreateRoute from "../planer/CreateRoute"
 import RoutingInstr from "../planer/RoutingInstr"
@@ -136,6 +137,7 @@ const Routes = () => {
                     <PrivateRoute path="/companies" component={Companies}/>
                     <PrivateRoute path="/masterdata" component={ChangeMasterData}/>
                     <PrivateRoute path="/collectdata" component={DataCollection}/>
+                    <PrivateRoute path="/externalreminder" component={ExternalReminder}/>
                 </Switch>
             </div>
         </BrowserRouter>
@@ -143,4 +145,4 @@ const Routes = () => {
         )
 };
 
-export default Routes;
+export default Routes; 
