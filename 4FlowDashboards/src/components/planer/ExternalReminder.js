@@ -11,11 +11,9 @@ function useDbData(){
     useEffect(() => {
         firebase.firestore().collection('Users').doc('User-Data').onSnapshot((snapshot) =>{
             const val = snapshot.data();   
-            const newDbData = Object.keys(val).map((keyName, i) => (
+            const newDbData = Object.keys(val).map((keyName) => (
                  val[keyName]
-                
             ))
-            console.log(newDbData);
              setDbData(newDbData);
         })
     }, []);
