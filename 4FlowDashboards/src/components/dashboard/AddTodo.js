@@ -30,11 +30,14 @@ export class AddTodo extends Component {
     };
 
     addSubtask = () => {
+        let x = uuidv4();
         const defaultSubtask = {
-            id: uuidv4(),
+            id: x,
             title: '',
             completed: false,
         };
+        console.log("Sub task problem")
+        console.log(defaultSubtask)
         this.state.subTasks.push(defaultSubtask);
         this.setState({subTasks: this.state.subTasks})
     };
@@ -72,6 +75,7 @@ export class AddTodo extends Component {
     };
 
     setFactory = (setType) => {
+        
         if(setType == "Set1"){
             return( [          {
                 id: uuidv4(),
@@ -114,6 +118,7 @@ export class AddTodo extends Component {
 
     prepareAndSubmit = () => {
         const stateCopy = {...this.state};
+        stateCopy["id"] = uuidv4();
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
         // stateCopy['subTasks'] = [
@@ -139,6 +144,7 @@ export class AddTodo extends Component {
         //     },
         // ]
         stateCopy['subTasks'] = this.setFactory(this.state.buttonTitle)
+        console.log(stateCopy)
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };

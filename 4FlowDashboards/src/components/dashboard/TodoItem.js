@@ -5,6 +5,7 @@ import SubTaskList from './SubTaskList';
 
 export class TodoItem extends Component {
 
+    
     render() {
         const {id, title, subTasks} = this.props.todo;
         const tasks = subTasks == undefined ? [] : subTasks
