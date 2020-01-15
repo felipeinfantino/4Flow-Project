@@ -82,8 +82,9 @@ async function parseEmail(emailRaw: string) {
       const title = line.substring(8);
       task["id"] = uuidv4();
       task["status"] = "To do";
-      task["subtasks"] = [];
+      task["subTasks"] = [];
       task["title"] = title;
+      task["type"] = "pipeline";
       console.log("Task found , title : ", title);
       tasks.push(task);
     }
@@ -93,7 +94,7 @@ async function parseEmail(emailRaw: string) {
       subtask["completed"] = false;
       subtask["id"] = uuidv4();
       subtask["title"] = title;
-      tasks[tasks.length - 1]["subtasks"].push(subtask);
+      tasks[tasks.length - 1]["subTasks"].push(subtask);
       console.log("SubTask found , title : ", title);
     }
   }
