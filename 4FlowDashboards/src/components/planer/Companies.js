@@ -6,24 +6,70 @@ import Grid from "./Grid";
 import Form from "./Form";
 
 
-function useDbData(){
+const SORT_OPTIONS = {
+    'TIME_ASC': {column: 'type', direction: 'asc' },
+    'TIME_DESC': {column: 'type', direction: 'desc' },
 
+    'NAME_ASC': {column: 'name', direction: 'asc' },
+    'NAME_DESC': {column: 'name', direction: 'desc' }
+}
+
+const SEARCH = {
+    'SNAME': {column: 'name'}
+}
+
+
+
+function camelCase(str){
+    return (str.slice(0,1)).toUpperCase()+str.slice(1).toLowerCase();
+}
+function useDbData(sortBy='NAME_ASC', searchBy='SNAME'){
+    console.log(sortBy);
+    console.log(searchBy.to);
+    console.log(camelCase(searchBy));
+    console.log([searchBy, searchBy.toUpperCase(), searchBy.toLowerCase(), camelCase(searchBy)]);
+    
     const [dbData, setDbData] = useState([]);
     useEffect(() => {
-        firebase.firestore().collection('CompanyDetails').onSnapshot((snapshot) =>{
+      if(searchBy != "SNAME" && searchBy.length != 0){
+        firebase.firestore()
+        .collection('CompanyDetails')
+        .orderBy(SORT_OPTIONS[sortBy].column, SORT_OPTIONS[sortBy].direction)
+        .where("name","in", [searchBy, searchBy.toUpperCase(), searchBy.toLowerCase(), camelCase(searchBy)])
+        .onSnapshot((snapshot) =>{
             const newDbData = snapshot.docs.map((doc) =>({
                 id: doc.id,
                 ...doc.data()
-            }))
+            }))   
             setDbData(newDbData);
         })
-    }, []);
+        }else {
+            console.log("is empty");
+            firebase.firestore()
+        .collection('CompanyDetails')
+        .orderBy(SORT_OPTIONS[sortBy].column, SORT_OPTIONS[sortBy].direction)
+        .onSnapshot((snapshot) =>{
+            const newDbData = snapshot.docs.map((doc) =>({
+                id: doc.id,
+                ...doc.data()
+            }))   
+            setDbData(newDbData);
+        })            
+        }        
+    }, [sortBy,searchBy]);
     return dbData;
 }
 
 function Companies() {
 
-    const dbData = useDbData();
+    const [sortBy, setSortBy] = useState('NAME_ASC')
+    const [searchBy, setSearchBy] = useState('SNAME')
+    const dbData = useDbData(sortBy,searchBy);
+
+    function handleSearch(e){
+        setSearchBy(e.currentTarget.value);
+        console.log(searchBy);
+    }
     function handleClick(data){
         firebase.firestore().collection('CompanyDetails').add({
             name: data.name,
@@ -36,18 +82,17 @@ function Companies() {
         return (
             <div>
                 <fieldset className="contact">
-                   {/* <legend id="contact-legend" className="contact-legend"></legend> */}
-                   <Form onHandleClick={handleClick}/>
+                   <Form  onHandleClick={handleClick}/>
                     <div className="grid-view">
                         <div className="grid-container" >
                             <div className="company-grid-header">
-                                <div className="grid-header"><span>Name</span></div>
+                                <div className="grid-header" ><span>Name</span></div>
                                 <div className="grid-header"><span>Email</span></div>
                                 <div className="grid-header"><span>Phone</span></div>
                                 <div className="grid-header"><span>Address</span></div>
                                 <div className="grid-header"><span>Type</span></div>
                             </div>
-                            <div>
+                            <div style={{marginTop: "30px"}}>
                                 {dbData.map((doc) =>{
                                         return <Grid 
                                         key = {doc.id}
@@ -62,7 +107,17 @@ function Companies() {
                             </div>
                         </div>
                         <div className="company-grid-bottom">
-                            {/* <input className="grid-search" type="text" placeholder="Search company by name"/> */}
+                            <input   className="grid-search" type="text" placeholder="Search company by name" 
+                            onChange={handleSearch}/>
+                            <select value={sortBy} onChange={e =>setSortBy(e.currentTarget.value)} style={{marginTop:"2px",height:"20px",width:"216px"}}>
+                                <option value="NAME_ASC">Name (a-z)</option>
+                                <option value="NAME_DESC">Name (z-a)</option>
+                                <option disabled>----</option>
+                                <option value="TIME_ASC">Type (a-z)</option>
+                                <option value="TIME_DESC">Type (z-a)</option>
+                                
+                                
+                            </select>
                         </div>
                     </div>
                 </fieldset>

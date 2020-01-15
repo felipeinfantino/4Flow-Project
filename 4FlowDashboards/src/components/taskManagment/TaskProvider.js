@@ -37,7 +37,7 @@ export default class TaskProvider extends Component {
     }
 
     componentDidMount(){
-        db.collection("PlanerTasks").onSnapshot((querySnapshot) =>{
+        db.collection("PlanerTasks").onSnapshot((querySnapshot) => {
             console.log(querySnapshot);
             const currentTodosInDb = [];
             querySnapshot.forEach((doc) => {
