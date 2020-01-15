@@ -21,6 +21,7 @@ import Notifications from "../planer/Notifications"
 import Companies from "../planer/Companies"
 import ChangeMasterData from "../planer/ChangeMasterData"
 import DataCollection from "../planer/DataCollection"
+import ErrorFormular from "../external/ErrorFormular"
 
 
 const NavItems = () => {
@@ -35,6 +36,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/companies">Companies</Link></Nav.Link>
+                <Nav.Link><Link to="/problemcontact">Problems</Link></Nav.Link>
                 {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
@@ -136,6 +138,7 @@ const Routes = () => {
                     <PrivateRoute path="/companies" component={Companies}/>
                     <PrivateRoute path="/masterdata" component={ChangeMasterData}/>
                     <PrivateRoute path="/collectdata" component={DataCollection}/>
+                    <PrivateRoute path="/problemcontact" component={ErrorFormular}/>
                 </Switch>
             </div>
         </BrowserRouter>

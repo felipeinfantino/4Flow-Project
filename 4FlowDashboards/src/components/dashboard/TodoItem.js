@@ -8,6 +8,7 @@ var db =  firebase.firestore();
 
 export class TodoItem extends Component {
 
+
      deleteTaskAndNotify = async(id) =>{
         // get the task data
         const snapshot = await db.collection("PlanerTasks").doc(id).get();
