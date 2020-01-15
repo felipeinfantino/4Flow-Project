@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import firebase from "../firebase/Firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 var db =  firebase.firestore();
 
 function Form(props){
-    
     const [companyData, setCompanyData] = useState({
         name: "",
         email: "",
@@ -17,8 +16,6 @@ function Form(props){
     
     function handleChange(event){
         const { name, value } = event.target;
-        console.log(event.target);
-
         setCompanyData(prevValue => {
           return {
             ...prevValue,
@@ -28,6 +25,7 @@ function Form(props){
     }
     return <div className="addingCompany">
                 <form className="add-comapny-form">
+                    {/* <input name="qwerty" style={{width:"200px"}} /> */}
                     <input name="name" placeholder="Enter company name" onChange={handleChange} value={companyData.name}></input>
                     <input name="email" placeholder="Enter Email address" onChange={handleChange} value={companyData.email}></input>
                     <input name="phone" placeholder="Enter phone number" onChange={handleChange} value={companyData.phone}></input>
