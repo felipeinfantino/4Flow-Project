@@ -6,6 +6,8 @@ import { TaskContext, planerColumnNames } from '../taskManagment/TaskProvider';
 import { uploadTask } from '../taskManagment/TaskUploader';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import AddToDoPersonal from '../dashboard/AddToDoPersonal';
+import {OverlayTrigger, Button} from 'react-bootstrap'
+import TaskFilter from './TaskFilter'
 
 const defaultState = {
     isPrivate: true,
@@ -39,7 +41,7 @@ export class Planer extends React.Component {
                     {Object.keys(planerColumnNames).map((state) => {
                         return (
                             <div key={state} style={{width: '25vw'}}>
-                                <h5 style={{
+                                <div><h5 style={{
                                     backgroundColor: '#F8F8F8',
                                     border: '1px solid black',
                                     borderRadius: '5px',
@@ -47,6 +49,18 @@ export class Planer extends React.Component {
                                     padding: '10px',
                                     fontStyle: 'bold'
                                 }}>{planerColumnNames[state]}</h5>
+                                {planerColumnNames[state] === "Done" &&
+                                    <OverlayTrigger trigger="click" placement="bottom" overlay={TaskFilter}>
+                                        <Button style={{
+                                            float: 'right',
+                                            position: 'relative',
+                                            top: '-57px',
+                                            left: '-35px'}} 
+                                            variant="success">+</Button>
+                                    </OverlayTrigger>
+
+                                }
+                                </div>
                                 {this.state.isPrivate ?
                                     <TaskContext.Consumer>
                                     {(context) => (
