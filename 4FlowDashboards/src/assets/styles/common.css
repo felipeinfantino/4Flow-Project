@@ -71,3 +71,36 @@ button {
   font-size: 14px;
 }
 
+fieldset.contact {
+  width: 1460px;
+  height: 499px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 95px;
+  margin-right: 80px;
+  background-color: white;
+}
+
+.master-data-form .data-row .data-col {
+  text-align: left;
+}
+
+.master-data-form .data-row .data-col span {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.master-data-form .data-row .data-col input {
+  width: 80%;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.master-data-form .data-row {
+  margin-bottom: 15px;
+}
+
+.master-data-submission {
+  text-align: right;
+}
