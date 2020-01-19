@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+body {
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+/* general button styling */
+
+button {
+  font-size: 12px;
+  padding: 5px 20px;
+  height: auto;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 3px;
+  background-color: #880e4f;
+  border: solid 1px #880e4f;
+}
+
+/* help button */
+.btn-help {
+  background-color: #212f4f;
+  border: solid 1px #212f4f;
+}
+
+.btn-start {
+  background-color: #60a3bc;
+  border: solid 1px #60a3bc;
+}
+
+.heading5 {
+  font-size: 22px;
+}
+
+.form-control {
+  padding: 20px;
+}
+
+.new-notification-header {
+  margin: 0px;
+  height: auto;
+  text-align: left;
+  font-weight: 500;
+  padding-left: 10px;
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px
+}
+
+.list-group {
+  margin: 0px 5px;
+}
+
+.App-intro {
+  margin-top: 40px;
+}
+
+.upload-button {
+  background-color: #00A82D;
+  border: solid 1px #00A82D;
+  margin-right: 20px;
+}
+
+.excelMac {
+  width: auto;
+  margin: 6px 0px 10px 12px;
+  float: left;
+  font-size: 14px;
+}
+

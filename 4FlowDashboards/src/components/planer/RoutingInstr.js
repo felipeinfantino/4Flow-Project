@@ -13,8 +13,8 @@ class RoutingInstr extends React.Component {
                     <a class="excelMac" href="#">Excel Macro Programming file</a>
                 </fieldset>
                 <div class="instructions-buttons">
-                    <button class="btn-lg">Broadcast information to all parties</button><br></br>
-                    <button class="btn-lg">Syncronize dates with parties</button><br></br>
+                    <button>Broadcast information to all parties</button><br></br>
+                    <button>Syncronize dates with parties</button><br></br>
                 </div>
             </div>    
 
