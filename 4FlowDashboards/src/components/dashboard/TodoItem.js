@@ -58,7 +58,7 @@ export class TodoItem extends Component {
                         <p style={{float: "left"}}>
                         {title} 
                         </p>
-                        <button className="btn btn-secondary btn-sm" style={{float: "right"}} onClick={() =>this.getHelp(id)} >Help</button>
+                        <button className="btn-help" onClick={() =>this.getHelp(id)} >Help</button>
                     </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={id}>

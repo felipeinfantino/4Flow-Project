@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import './UserCreate.css'
 import firebase from "../firebase/Firebase";
-import { Redirect } from 'react-router-dom'
 var dir = false;
 
 

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
-import createHistory from 'history/createBrowserHistory'
-
 
 export class SubTask extends Component {
 
@@ -32,7 +30,7 @@ export class SubTask extends Component {
                             onClick={this.props.toggleSubTask.bind(this, this.props.subTask.id, this.props.todoId)}>Undo</Button> :
                     // <Button variant="success" size="sm" style={{padding: '3px', margin: '10px'}}
                     //         onClick={this.props.toggleSubTask.bind(this, this.props.subTask.id, this.props.todoId)}>Done</Button>
-                    <Button variant="success" size="sm" style={{padding: '3px', margin: '10px'}}
+                    <Button className="btn-start"
                             onClick={() =>this.startTask(this.props.subTask.id, this.props.todoId, this.props.subTask.title)}>Start</Button>
                     
                     }
