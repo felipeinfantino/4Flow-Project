@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
+import '../../assets/styles/common.css';
 
 export class SubTask extends Component {
 

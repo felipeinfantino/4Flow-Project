@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Accordion, Card} from 'react-bootstrap';
 import SubTaskList from './SubTaskList';
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 
 var db =  firebase.firestore();
 

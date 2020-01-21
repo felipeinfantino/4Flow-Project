@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Button, Form, DropdownButton, Dropdown} from 'react-bootstrap';
 import {columnNames} from '../app/App';
 import DatePicker from "react-datepicker";
+import '../../assets/styles/common.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 
