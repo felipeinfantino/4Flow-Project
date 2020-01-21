@@ -28,6 +28,7 @@ export class AddToDoPersonal extends Component {
     };
 
     addSubtask = () => {
+        //let newId = uuidv4()
         const defaultSubtask = {
             id: uuidv4(),
             title: '',
@@ -73,6 +74,7 @@ export class AddToDoPersonal extends Component {
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
         stateCopy['subTasks'] = this.state.subTasks;
+        stateCopy["id"] = uuidv4();
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };
