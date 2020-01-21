@@ -115,6 +115,31 @@ export class AddTodo extends Component {
             }])
 
         }
+        if(setType == "ExampleSet"){
+            return( [       
+                     {
+                         id: uuidv4(),
+                         title: 'Collect Data & Communication',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Change Master Data',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Create Route',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Create and send routing instructions',
+                         completed: false,
+                     },
+                    ])
+
+        }
     }
 
     prepareAndSubmit = () => {
@@ -122,28 +147,6 @@ export class AddTodo extends Component {
         stateCopy["id"] = uuidv4();
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
-        // stateCopy['subTasks'] = [
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Collect Data & Communication',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Change Master Data',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Create Route',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Create and send routing instructions',
-        //         completed: false,
-        //     },
-        // ]
         stateCopy['subTasks'] = this.setFactory(this.state.buttonTitle)
         console.log(stateCopy)
         this.props.addTodo(stateCopy);
@@ -181,6 +184,7 @@ export class AddTodo extends Component {
                                 <Dropdown.Item eventKey="Set1">Set 1</Dropdown.Item>
                                 <Dropdown.Item eventKey="Set2">Set 2</Dropdown.Item>
                                 <Dropdown.Item eventKey="Set3">Set 3</Dropdown.Item>
+                                <Dropdown.Item eventKey="ExampleSet">Example Set</Dropdown.Item>
                             </DropdownButton>
 
                             <DatePicker
