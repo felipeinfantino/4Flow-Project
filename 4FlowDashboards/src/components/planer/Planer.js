@@ -27,7 +27,7 @@ export class Planer extends React.Component {
         };
 
         this.state = {
-            isPrivate: true,
+            isPrivate: false,
             filterValue: filterOptions.ALL,
             updateFilterStatePlaner: this.updateFilterStatePlaner
         }
@@ -72,10 +72,10 @@ export class Planer extends React.Component {
                 <div>
                     <BootstrapSwitchButton
                         checked={this.state.isPrivate}
-                        onlabel='Pipeline'
-                        onstyle='danger'
-                        offlabel='Personal'
-                        offstyle='success'
+                        onlabel='Personal'
+                        onstyle='success'
+                        offlabel='Pipeline'
+                        offstyle='danger'
                         style='w-25 mt-5'
                         onChange={() => {
                             this.setState({
