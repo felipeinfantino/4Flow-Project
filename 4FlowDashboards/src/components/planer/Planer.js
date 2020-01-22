@@ -9,12 +9,13 @@ import AddToDoPersonal from '../dashboard/AddToDoPersonal';
 import {OverlayTrigger, Button} from 'react-bootstrap';
 import TaskFilter from './TaskFilter';
 import {IoIosOptions} from 'react-icons/io';
-import { IconContext } from "react-icons";
+import {IconContext} from "react-icons";
 import {FilterContext, filterOptions, FilterProvider} from "./FilterContext";
 
 
 const defaultState = {
     isPrivate: true,
+    filterValue: filterOptions.ALL,
 };
 
 export class Planer extends React.Component {
@@ -39,6 +40,9 @@ export class Planer extends React.Component {
             case filterOptions.YEAR:
                 startDate.setDate(startDate.getDate() - 365);
                 break;
+            default:
+                startDate = deadline;
+                endDate = deadline;
         }
 
         return deadline >= startDate && deadline <= endDate;
