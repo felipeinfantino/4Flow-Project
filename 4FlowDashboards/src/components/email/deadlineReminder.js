@@ -4,13 +4,9 @@ import {Redirect} from "react-router";
 var db =  firebase.firestore();
 
 var list = []
-class deadlineRem extends React.Component {
-    constructor(props) {
-      super(props);
-    }
 
-    componentDidMount(){
-        var currentDateInHours = Date.now()/(1000*60*60);
+function getData(){
+    var currentDateInHours = Date.now()/(1000*60*60);
         var oneDay = 24;
         db.collection("PlanerTasks").get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
@@ -22,10 +18,10 @@ class deadlineRem extends React.Component {
                 
             }
         });
-    });        
-    }
-    
-    sendEmail = async () =>{
+    });   
+
+}
+ function sendEmail (){
 
          return fetch('http://localhost:3001/email', {
             method: 'POST',
@@ -40,31 +36,21 @@ class deadlineRem extends React.Component {
             })
         })
     }
-    send = async () => {
-            try{
-                const repo = await this.sendEmail();
-                alert("Email successfully sent");
-                console.log(repo);
-            }catch(e){
-                console.log(e);
-                alert("Somenthing went wrong try again please");
-            }   
-    }
-
-       
-    render(){
+    
+function deadlineRem(){
+        getData()
         return (
             <div>
                 <form id="emailForm">
                     <div>
-                        <button type="submit" className="btn btn-primary submit-button" onClick={this.send}>Send</button>
+                        <button type="submit" className="btn btn-primary submit-button" onClick={sendEmail}>Send</button>
                     </div>
                 </form>
             </div>
         )
     
     
-    }
+    
 }
 
 export default deadlineRem;
