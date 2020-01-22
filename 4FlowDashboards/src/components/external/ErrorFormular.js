@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Form, Button} from 'react-bootstrap'
 import './ErrorFormular.css'
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 
 
 const initialState = {

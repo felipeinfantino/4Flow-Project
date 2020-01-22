@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Button, Form} from 'react-bootstrap';
 import {columnNames} from '../app/App';
 import DatePicker from "react-datepicker";
+import '../../assets/styles/common.css';
 
 const uuidv4 = require('uuid/v4');
 

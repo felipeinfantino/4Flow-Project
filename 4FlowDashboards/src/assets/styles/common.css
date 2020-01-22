@@ -1,0 +1,155 @@
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+
+body {
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+/* general button styling */
+
+button {
+  font-size: 12px !important;
+  padding: 5px 20px;
+  height: auto;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 3px !important;
+  background-color: #880e4f;
+  border: solid 1px #880e4f;
+}
+
+/* help button */
+.btn-help {
+  background-color: #212f4f;
+  border: solid 1px #212f4f;
+  float: right;
+}
+
+.btn-start {
+  background-color: #60a3bc;
+  border: solid 1px #60a3bc;
+  padding: 3px;
+  margin: 10px;
+}
+
+.heading5 {
+  font-size: 22px;
+}
+
+.form-control {
+  padding: 20px;
+}
+
+.new-notification-header {
+  margin: 0px !important;
+  height: auto !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+  padding-left: 10px !important;
+  padding: 20px !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  margin-bottom: 10px !important;
+}
+
+.list-group {
+  margin: 0px 5px;
+}
+
+.App-intro {
+  margin-top: 40px;
+}
+
+.upload-button {
+  background-color: #00A82D;
+  border: solid 1px #00A82D;
+  margin-right: 20px;
+}
+
+.excelMac {
+  width: auto;
+  margin: 6px 0px 10px 12px;
+  float: left;
+  font-size: 14px;
+}
+
+fieldset.contact {
+  width: 1460px;
+  height: 499px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 95px;
+  margin-right: 80px;
+  background-color: white;
+}
+
+.master-data-form .data-row .data-col {
+  text-align: left;
+}
+
+.master-data-form .data-row .data-col span {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.master-data-form .data-row .data-col input {
+  width: 100%;
+  padding: 5px;
+  font-size: 12px;
+  display: block;
+}
+
+.master-data-form .data-row {
+  margin-bottom: 30px;
+}
+
+.master-data-submission {
+  text-align: right;
+}
+
+fieldset.notifications {
+  width: 99%;
+}
+
+.master-data .master-data-legend {
+  margin-bottom: 30px;
+}
+
+a {
+  color: rgb(57, 65, 73);
+  font-size: 12px;
+}
+
+.nav-link a, .nav-link  {
+  color: rgb(57, 65, 73);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-link a:hover, a:hover {
+  transition: all 0.1s ease 0s !important;
+  opacity: 0.5 !important;
+  text-decoration: none;
+  color: rgb(57, 65, 73);
+}
+
+.form-group input {
+  font-size: 12px;
+}
+
+.form-control, .form-check-label {
+  font-size: 12px !important;
+}
+
+.bm-burger-button .bm-burger-bars {
+  background: #ffffff;
+  height: 15% !important;
+}
+
+.bm-burger-button button {
+  color: transparent !important;
+}

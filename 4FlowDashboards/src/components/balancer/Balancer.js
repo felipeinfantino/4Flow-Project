@@ -1,6 +1,7 @@
 import React from 'react';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/styles/common.css';
 import { TaskContext, balancerColumnNames } from '../taskManagment/TaskProvider';
 
 class Balancer extends React.Component {

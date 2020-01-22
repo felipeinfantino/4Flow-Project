@@ -6,6 +6,7 @@ import { TaskContext, planerColumnNames } from '../taskManagment/TaskProvider';
 import { uploadTask } from '../taskManagment/TaskUploader';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import AddToDoPersonal from '../dashboard/AddToDoPersonal';
+import '../../assets/styles/common.css';
 
 const defaultState = {
     isPrivate: true,

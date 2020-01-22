@@ -4,6 +4,7 @@ import './ResetPassword.css';
 import firebase from "../firebase/Firebase";
 import {AuthContext} from "../auth/Auth";
 import { get } from 'https';
+import '../../assets/styles/common.css';
 
 
 

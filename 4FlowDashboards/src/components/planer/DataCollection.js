@@ -1,6 +1,7 @@
 import React from 'react';
 import './main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/styles/common.css';
 import {Checkbox} from 'react-router-dom';
 import { TaskContext } from '../taskManagment/TaskProvider';
 
