@@ -153,3 +153,7 @@ a {
 .bm-burger-button button {
   color: transparent !important;
 }
+
+.react-datepicker-wrapper input {
+  font-size: 12px !important;
+}
