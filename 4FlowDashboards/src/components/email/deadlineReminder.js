@@ -21,7 +21,7 @@ function getData(){
     });   
 
 }
-   function sendEmail (){
+   async function sendEmail (){
 
          /*return fetch('http://localhost:3001/email', {
             method: 'POST',
@@ -36,7 +36,7 @@ function getData(){
             })
         })*/
         try{
-            fetch('http://localhost:3001/email', {
+           const response = await fetch('http://localhost:3001/email', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -44,10 +44,11 @@ function getData(){
                 },
                 body: JSON.stringify({
                     destinations: ["amostuproject@gmail.com"],
-                    subject: "Internal Reminder",
+                    subject: "MY TEST",
                     text: list.join()
                 })
     });
+    console.log(response)
     alert("Email successfully sent");
         }catch(e){
             console.log("error ", e);

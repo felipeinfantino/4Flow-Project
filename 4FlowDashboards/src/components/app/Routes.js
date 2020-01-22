@@ -134,7 +134,7 @@ const Routes = () => {
                     <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                     <Route path="/emailNoAccess" component={EmailNoAccess}/>
                     <Route exact path="/login" component={LoginContainer}/>
-                    <Route exact path="/deadlineReminder" component={DeadlineReminder}/>
+                    <PrivateRoute path="/deadlineReminder" component={DeadlineReminder}/>
                     <PrivateRoute path="/createRoute" component={CreateRoute}/>
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
