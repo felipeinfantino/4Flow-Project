@@ -5,15 +5,8 @@ var db =  firebase.firestore();
 
 var list = []
 class deadlineRem extends React.Component {
-    today;
     constructor(props) {
       super(props);
-      this.state = {
-        Email : 'Loading Email....',
-        Subject : 'Loading Subject....',
-        Route : 'Loading Route....'
-      };
-    this.today = 0;
     }
 
     componentDidMount(){
@@ -23,7 +16,7 @@ class deadlineRem extends React.Component {
             querySnapshot.forEach(function(doc) {
             if (typeof(doc.get('deadline')) !== 'undefined'){
                 var hours = Date.parse(doc.get('deadline').toDate())/(1000*60*60);
-                if(hours-currentDateInHours <= oneDay){
+                if(hours-currentDateInHours <= oneDay && hours-currentDateInHours > 0){
                     list.push(doc.id);
                 }
                 
@@ -31,10 +24,8 @@ class deadlineRem extends React.Component {
         });
     });        
     }
-    test(){
-        alert("Hello World");
-    }
-    sendEmail = async () =>{
+    
+    sendEmail (){
 
          return fetch('http://localhost:3001/email', {
             method: 'POST',
@@ -43,7 +34,7 @@ class deadlineRem extends React.Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                destinations: ["a.karojan1989@yahoo.de"],
+                destinations: ["amostuproject@gmail.com"],
                 subject: "Deadline-Reminder",
                 text: list.join()
             })
@@ -66,7 +57,7 @@ class deadlineRem extends React.Component {
             <div>
                 <form id="emailForm">
                     <div>
-                        <button type="submit" className="btn btn-primary submit-button" onClick={this.send}>Send</button>
+                        <button type="submit" className="btn btn-primary submit-button" onClick={this.sendEmail}>Send</button>
                     </div>
                 </form>
             </div>
