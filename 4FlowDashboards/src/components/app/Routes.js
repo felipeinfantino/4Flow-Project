@@ -36,7 +36,6 @@ const NavItems = () => {
                 <Nav.Link><Link to="/balancer">Balancer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/companies">Companies</Link></Nav.Link>
-                <Nav.Link><Link to="/externalreminder">Reminders</Link></Nav.Link>
                 {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
