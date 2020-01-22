@@ -21,9 +21,9 @@ function getData(){
     });   
 
 }
- function sendEmail (){
+   function sendEmail (){
 
-         return fetch('http://localhost:3001/email', {
+         /*return fetch('http://localhost:3001/email', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -34,9 +34,26 @@ function getData(){
                 subject: "Deadline-Reminder",
                 text: list.join()
             })
-        })
+        })*/
+        try{
+            fetch('http://localhost:3001/email', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    destinations: ["amostuproject@gmail.com"],
+                    subject: "Internal Reminder",
+                    text: list.join()
+                })
+    });
+    alert("Email successfully sent");
+        }catch(e){
+            console.log("error ", e);
+        }
     }
-    
+
 function deadlineRem(){
         getData()
         return (
