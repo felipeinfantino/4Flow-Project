@@ -2,6 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
 import {Accordion} from 'react-bootstrap';
+import '../../assets/styles/common.css';
 
 class Todos extends React.Component {
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Button, Form, DropdownButton, Dropdown} from 'react-bootstrap';
 import {columnNames} from '../app/App';
 import DatePicker from "react-datepicker";
+import '../../assets/styles/common.css';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -12,6 +13,7 @@ const defaultState = {
     title: '',
     buttonToggled: false,
     buttonTitle: 'Select Set',
+    type: 'pipeline',
     deadline: new Date(),
     subTasks: [
         {
@@ -30,11 +32,14 @@ export class AddTodo extends Component {
     };
 
     addSubtask = () => {
+        let x = uuidv4();
         const defaultSubtask = {
-            id: uuidv4(),
+            id: x,
             title: '',
             completed: false,
         };
+        console.log("Sub task problem")
+        console.log(defaultSubtask)
         this.state.subTasks.push(defaultSubtask);
         this.setState({subTasks: this.state.subTasks})
     };
@@ -72,6 +77,7 @@ export class AddTodo extends Component {
     };
 
     setFactory = (setType) => {
+        
         if(setType == "Set1"){
             return( [          {
                 id: uuidv4(),
@@ -110,35 +116,40 @@ export class AddTodo extends Component {
             }])
 
         }
+        if(setType == "ExampleSet"){
+            return( [       
+                     {
+                         id: uuidv4(),
+                         title: 'Collect Data & Communication',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Change Master Data',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Create Route',
+                         completed: false,
+                     },
+                     {
+                         id: uuidv4(),
+                         title: 'Create and send routing instructions',
+                         completed: false,
+                     },
+                    ])
+
+        }
     }
 
     prepareAndSubmit = () => {
         const stateCopy = {...this.state};
+        stateCopy["id"] = uuidv4();
         delete stateCopy['buttonToggled'];
         stateCopy['status'] = columnNames.TO_DO;
-        // stateCopy['subTasks'] = [
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Collect Data & Communication',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Change Master Data',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Create Route',
-        //         completed: false,
-        //     },
-        //     {
-        //         id: uuidv4(),
-        //         title: 'Create and send routing instructions',
-        //         completed: false,
-        //     },
-        // ]
         stateCopy['subTasks'] = this.setFactory(this.state.buttonTitle)
+        console.log(stateCopy)
         this.props.addTodo(stateCopy);
         this.setState({...defaultState});
     };
@@ -174,6 +185,7 @@ export class AddTodo extends Component {
                                 <Dropdown.Item eventKey="Set1">Set 1</Dropdown.Item>
                                 <Dropdown.Item eventKey="Set2">Set 2</Dropdown.Item>
                                 <Dropdown.Item eventKey="Set3">Set 3</Dropdown.Item>
+                                <Dropdown.Item eventKey="ExampleSet">Example Set</Dropdown.Item>
                             </DropdownButton>
 
                             <DatePicker

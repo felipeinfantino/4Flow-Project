@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 
 var db = firebase.firestore();
 

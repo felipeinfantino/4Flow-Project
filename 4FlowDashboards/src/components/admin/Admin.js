@@ -2,6 +2,7 @@ import React from 'react';
 import Todos from '../dashboard/Todos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddTodo from '../dashboard/AddTodo';
+import './assets/styles/common.css';
 
 const uuidv4 = require('uuid/v4');
 document.body.style = 'background: black;';

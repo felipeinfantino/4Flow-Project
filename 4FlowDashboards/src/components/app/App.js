@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/styles/common.css';
 import SideBar from '../dashboard/SideBar';
 import {AuthProvider} from "../auth/Auth";
 import Routes from './Routes'
