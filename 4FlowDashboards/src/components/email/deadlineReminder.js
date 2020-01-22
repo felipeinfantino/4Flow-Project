@@ -25,7 +25,7 @@ class deadlineRem extends React.Component {
     });        
     }
     
-    sendEmail (){
+    sendEmail = async () =>{
 
          return fetch('http://localhost:3001/email', {
             method: 'POST',
@@ -57,7 +57,7 @@ class deadlineRem extends React.Component {
             <div>
                 <form id="emailForm">
                     <div>
-                        <button type="submit" className="btn btn-primary submit-button" onClick={this.sendEmail}>Send</button>
+                        <button type="submit" className="btn btn-primary submit-button" onClick={this.send}>Send</button>
                     </div>
                 </form>
             </div>
