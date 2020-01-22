@@ -10,23 +10,33 @@ import {OverlayTrigger, Button} from 'react-bootstrap';
 import TaskFilter from './TaskFilter';
 import {IoIosOptions} from 'react-icons/io';
 import {IconContext} from "react-icons";
-import {FilterContext, filterOptions, FilterProvider} from "./FilterContext";
+import {FilterContext, filterOptions} from "./FilterContext";
 
-
-const defaultState = {
-    isPrivate: true,
-    filterValue: filterOptions.ALL,
-};
 
 export class Planer extends React.Component {
-    static contextType = FilterContext;
 
-    state = {...defaultState};
+    constructor(props) {
+        super(props);
+
+        this.updateFilterStatePlaner = (value) => {
+            this.setState({
+                ...this.state,
+                filterValue: value
+            });
+        };
+
+        this.state = {
+            isPrivate: true,
+            filterValue: filterOptions.ALL,
+            updateFilterStatePlaner: this.updateFilterStatePlaner
+        }
+    }
+
 
     checkFilter = (deadline) => {
         let startDate = new Date(), endDate = new Date();
 
-        let filter = this.context.filterValue;
+        let filter = this.state.filterValue;
         switch (filter) {
             case filterOptions.WEEK:
                 startDate.setDate(startDate.getDate() - 7);
@@ -41,11 +51,14 @@ export class Planer extends React.Component {
                 startDate.setDate(startDate.getDate() - 365);
                 break;
             default:
-                startDate = deadline;
-                endDate = deadline;
+                startDate = new Date(deadline.seconds * 1000);
+                endDate = new Date(deadline.seconds * 1000);
         }
 
-        return deadline >= startDate && deadline <= endDate;
+        startDate = startDate.getTime() / 1000;
+        endDate = endDate.getTime() / 1000;
+
+        return deadline.seconds >= startDate && deadline.seconds <= endDate;
     };
 
     addTodo = (todo) => {
@@ -54,17 +67,21 @@ export class Planer extends React.Component {
 
     render() {
         return (
-            <FilterProvider>
+            <FilterContext.Provider value={this.state}>
                 <div>
                     <BootstrapSwitchButton
-                        checked={false}
+                        checked={this.state.isPrivate}
                         onlabel='Pipeline'
                         onstyle='danger'
                         offlabel='Personal'
                         offstyle='success'
                         style='w-25 mt-5'
                         onChange={() => {
-                            this.setState({isPrivate: !this.state.isPrivate})
+                            this.setState({
+                                ...this.state,
+                                isPrivate: !this.state.isPrivate,
+                                filterValue: filterOptions.ALL
+                            })
                         }}
                     />
                     {this.state.isPrivate ?
@@ -124,7 +141,7 @@ export class Planer extends React.Component {
                         })}
                     </div>
                 </div>
-            </FilterProvider>
+            </FilterContext.Provider>
         );
     }
 }
