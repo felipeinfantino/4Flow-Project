@@ -11,6 +11,7 @@ import TaskFilter from './TaskFilter';
 import {IoIosOptions} from 'react-icons/io';
 import {IconContext} from "react-icons";
 import {FilterContext, filterOptions} from "./FilterContext";
+import '../../assets/styles/common.css';
 
 
 export class Planer extends React.Component {

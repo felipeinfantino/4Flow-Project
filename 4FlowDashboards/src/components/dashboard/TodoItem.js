@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Accordion, Card} from 'react-bootstrap';
 import SubTaskList from './SubTaskList';
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 
 var db =  firebase.firestore();
 
@@ -58,7 +59,7 @@ export class TodoItem extends Component {
                         <p style={{float: "left"}}>
                         {title} 
                         </p>
-                        <button className="btn btn-secondary btn-sm" style={{float: "right"}} onClick={() =>this.getHelp(id)} >Help</button>
+                        <button className="btn-help" onClick={() =>this.getHelp(id)} >Help</button>
                     </div>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={id}>

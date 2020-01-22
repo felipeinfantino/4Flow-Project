@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './companies.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 import Grid from "./Grid";
 import Form from "./Form";
 

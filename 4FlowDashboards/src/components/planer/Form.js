@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import firebase from "../firebase/Firebase";
+import '../../assets/styles/common.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

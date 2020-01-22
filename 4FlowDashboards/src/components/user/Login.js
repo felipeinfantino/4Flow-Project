@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import '../../assets/styles/common.css';
 
 const Login = (props) => {
     const [handleLogin, handleInputChange, toggleResetPassword, resetPassword] = props.functions;

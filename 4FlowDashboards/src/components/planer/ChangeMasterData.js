@@ -1,6 +1,7 @@
 import React from 'react';
 import './main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../assets/styles/common.css';
 
 
 
@@ -9,7 +10,7 @@ class ChangeMasterData extends React.Component {
         return (
                 <fieldset class="master-data">
                     <legend class="master-data-legend">Preview Von Data</legend>
-                        <form class="master-data-form">
+                        <form class="master-data-form container">
                             <div class="row data-row">
                                 <div class="col-lg-4 data-col">
                                     <span>Order ID</span><input type="text" value="id12343543534"></input>
