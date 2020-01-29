@@ -21,23 +21,27 @@ function useDbData(){
     return dbData;
 }
 
-function send (){
-    //const dbData = useDbData();
-    //const list = []
+async function send (){
     const dbData = ["amostuproject@gmail.com", "amostuproject@gmail.com"]
     let input = document.getElementById('optionalInput').value;
-    return fetch('http://localhost:3001/email', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                destinations: dbData,
-                subject: input,
-                text: 'Exter-Reminder-Test'
-            })
+    
+    try {
+      const response = await fetch("http://localhost:3001/email", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          destinations: dbData,
+          subject: input,
+          text: "External-Reminder"
         })
+      });
+      alert("Email successfully sent");
+    } catch (e) {
+      console.log("error ", e);
+    }
 }
 function ExternalReminder() {
     const dbData = useDbData();
@@ -65,7 +69,7 @@ function ExternalReminder() {
                                         </div>
                                         <div className="row">
                                             <input className="form-control" type="text" name="subject"  id = 'optionalInput'></input>
-                                            <button type="btn" className="btn btn-primary btm-sm" onClick={send}>Send</button>
+                                            <button type="btn" className="btn btn-primary btm-sm" onClick={() => send()}>Send</button>
                                         </div>
                                     </div>
                                 </div>
