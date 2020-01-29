@@ -51,14 +51,14 @@ function ExternalReminder() {
                 <div id="contact-template">
                 <div className="template-body">
                             <div className="row row-content">
-                                <div class="heading">
+                                <div className="heading">
                                     <h3>People Involved</h3>
                                 </div>
                               <div className="col-md-12 column-content">
                                 <h5>List of people involved in the task</h5>
                                 <ul>
-                                  {dbData.map((doc) =>{
-                                        return <li>{doc.email}</li>
+                                  {dbData.map((doc,index) =>{
+                                        return <li key = {index}>{doc.email}</li>
                                 })}
                                 </ul>
                               </div>
