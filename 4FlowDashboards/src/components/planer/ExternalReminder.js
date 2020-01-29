@@ -6,7 +6,7 @@ import Grid from "./Grid";
 import Form from "./Form";
 
 
-function useDbData(){
+/*function useDbData(){
 
     const [dbData, setDbData] = useState([]);
     useEffect(() => {
@@ -19,9 +19,9 @@ function useDbData(){
         })
     }, []);
     return dbData;
-}
+}*/
 
-async function send (){
+/*async function send (){
     const dbData = ["amostuproject@gmail.com", "amostuproject@gmail.com"]
     let input = document.getElementById('optionalInput').value;
     
@@ -42,10 +42,48 @@ async function send (){
     } catch (e) {
       console.log("error ", e);
     }
-}
-function ExternalReminder() {
-    const dbData = useDbData();
-   
+}*/
+class ExternalReminder extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        dbData : [ ],
+      };
+    }
+    componentDidMount(){
+        firebase.firestore().collection('Users').doc('User-Data').onSnapshot((snapshot) =>{
+            const val = snapshot.data();   
+            const newDbData = Object.keys(val).map((keyName) => (
+                 val[keyName]
+            ))
+            const data = {dbData:newDbData}
+             this.setState(data)
+        })
+    }
+   async sendEmail() {
+     const dbData = ["amostuproject@gmail.com", "amostuproject@gmail.com"]
+    let input = document.getElementById('optionalInput').value;
+    
+    try {
+      const response = await fetch("http://localhost:3001/email", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          destinations: dbData,
+          subject: input,
+          text: "External-Reminder"
+        })
+      });
+      alert("Email successfully sent");
+    } catch (e) {
+      console.log("error ", e);
+    }   
+   }
+    render() {
+        //const dbData = useDbData();
         return (
             <div>
                 <div id="contact-template">
@@ -57,7 +95,7 @@ function ExternalReminder() {
                               <div className="col-md-12 column-content">
                                 <h5>List of people involved in the task</h5>
                                 <ul>
-                                  {dbData.map((doc,index) =>{
+                                  {this.state.dbData.map((doc,index) =>{
                                         return <li key = {index}>{doc.email}</li>
                                 })}
                                 </ul>
@@ -69,7 +107,7 @@ function ExternalReminder() {
                                         </div>
                                         <div className="row">
                                             <input className="form-control" type="text" name="subject"  id = 'optionalInput'></input>
-                                            <button type="btn" className="btn btn-primary btm-sm" onClick={() => send()}>Send</button>
+                                            <button type="btn" className="btn btn-primary btm-sm" onClick={() => this.sendEmail()}>Send</button>
                                         </div>
                                     </div>
                                 </div>
@@ -78,6 +116,7 @@ function ExternalReminder() {
                 </div>
             </div>
         );
+    }
 }
 
 
