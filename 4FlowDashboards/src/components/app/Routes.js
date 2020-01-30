@@ -13,6 +13,7 @@ import SupplierContact from "../planer/SupplierContact";
 import StartPage from "./startpage";
 import EmailResp from "../email/emailResponse";
 import EmailNoAccess from "../email/emailNOAccess";
+import DeadlineReminder from "../email/deadlineReminder"
 import TaskProvider from '../taskManagment/TaskProvider';
 
 import CreateRoute from "../planer/CreateRoute"
@@ -37,6 +38,7 @@ const NavItems = () => {
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
                 <Nav.Link><Link to="/companies">Companies</Link></Nav.Link>
                 <Nav.Link><Link to="/problemcontact">Problems</Link></Nav.Link>
+                <Nav.Link><Link to="/deadlineReminder">DeadlineReminder</Link></Nav.Link>
                 {/* <Nav.Link><Link to="/contacts">Contact Template</Link></Nav.Link>
                 <Nav.Link><Link to="/createRoute">CreateRoute</Link></Nav.Link>
                 <Nav.Link><Link to="/routing">Routing Instrc</Link></Nav.Link>
@@ -132,6 +134,7 @@ const Routes = () => {
                     <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                     <Route path="/emailNoAccess" component={EmailNoAccess}/>
                     <Route exact path="/login" component={LoginContainer}/>
+                    <PrivateRoute path="/deadlineReminder" component={DeadlineReminder}/>
                     <PrivateRoute path="/createRoute" component={CreateRoute}/>
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
