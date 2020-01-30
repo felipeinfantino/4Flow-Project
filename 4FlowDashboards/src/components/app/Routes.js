@@ -14,6 +14,7 @@ import StartPage from "./startpage";
 import EmailResp from "../email/emailResponse";
 import EmailNoAccess from "../email/emailNOAccess";
 import TaskProvider from '../taskManagment/TaskProvider';
+import ExternalReminder from "../planer/ExternalReminder";
 
 import CreateRoute from "../planer/CreateRoute"
 import RoutingInstr from "../planer/RoutingInstr"
@@ -49,6 +50,7 @@ const NavItems = () => {
             <Nav className="mr-auto">
                 <Nav.Link><Link to="/planer">Planer</Link></Nav.Link>
                 <Nav.Link><Link to="/notifications">Notifications</Link></Nav.Link>
+                <Nav.Link><Link to="/externalreminder">Reminders</Link></Nav.Link>
                 {/* <Nav.Link><Link to="/companies">Companies</Link></Nav.Link> */}
                 {/* 
                 <Nav.Link><Link to="/masterdata">Change Master Data</Link></Nav.Link>
@@ -132,6 +134,8 @@ const Routes = () => {
                     <Route path="/email/:cid/:tid/:pid" component={EmailResp}/>
                     <Route path="/emailNoAccess" component={EmailNoAccess}/>
                     <Route exact path="/login" component={LoginContainer}/>
+                    <Route exact path="/externalreminder" component={ExternalReminder}/>
+                    
                     <PrivateRoute path="/createRoute" component={CreateRoute}/>
                     <PrivateRoute path="/routing" component={RoutingInstr}/>
                     <PrivateRoute path="/notifications" component={Notifications}/>
@@ -146,4 +150,4 @@ const Routes = () => {
         )
 };
 
-export default Routes;
+export default Routes; 

@@ -1,0 +1,23 @@
+.row-content {
+  margin: 20px;
+}
+
+.column-content {
+  padding: 15px 0;
+  text-align: left;
+}
+
+.column-content li {
+  display: inline-block;
+  padding: 10px;
+  border: solid 1px #000000;
+}
+
+.column-content ul {
+  margin: 15px 0;
+}
+
+.row-content .form-control {
+  width: 70%;
+  margin-right: 20px;
+}
